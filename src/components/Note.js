@@ -17,12 +17,12 @@ class Note extends Component {
     });
   };
   render() {
+    console.log(this.props.note, "checkit");
     return (
       <React.Fragment>
         <Link
           to={{
-            pathname: `/homepage/notes/${this.props.note.id}/editnote`,
-            state: { note: this.props.note }
+            pathname: `/homepage/notes/${this.props.note.id}/editnote`
           }}
         >
           <button className="edit-button"> Make Changes</button>
@@ -45,11 +45,3 @@ class Note extends Component {
   }
 }
 export default withRouter(Note);
-// <NewNote notebookId={this.props.notebookID} />
-// <Link
-//   to={`/${this.props.currentUser.email}e/homepag/notes/${
-//     this.props.note.id
-//   }`}
-//   style={{ textDecoration: "none" }}
-// >
-// </Link>

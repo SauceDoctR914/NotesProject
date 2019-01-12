@@ -5,19 +5,17 @@ import { fetchNotes } from "../redux/actions/actions";
 import Moment from "moment";
 class EditNote extends React.Component {
   componentDidMount() {
-    const { note } = this.props.location.state;
+    const { id } = this.props.match.params;
   }
 
-  note = this.props.location.state.note;
-  id = this.props.location.state.id;
-
+  //
   state = {
     note: {
-      id: this.id,
-      title: this.note.title,
-      created: this.note.created,
-      description: this.note.description,
-      content: this.note.content
+      id: "",
+      title: this.props.note.title,
+      created: "",
+      description: "",
+      content: ""
     }
   };
 
@@ -56,48 +54,48 @@ class EditNote extends React.Component {
   };
 
   render() {
-    console.log(this.props.location.state.note);
+    console.log(this.props, "api");
     return (
       <div>
         <form onSubmit={e => this.handleSubmit(e, this.state)}>
-          <label htmlFor="title"> NoteBook Title: </label>
+          <label htmlFor="title"> Note Title: </label>
           <br />
           <input
-            placeholder={this.state.note.title}
+            placeholder={""}
             onChange={this.handleNoteChange}
             name="title"
             id="title"
             type="text"
-            value={this.state.note.title}
+            value={""}
           />
           <br />
           <label htmlFor="created"> Date Created: </label>
-          <select value={this.state.created} onChange={this.handleDateChange}>
-            <option value={this.state.created}>
-              {Moment().format("MMMM Do, YYYY")}
-            </option>
+          <select value={""} onChange={this.handleDateChange}>
+            <option value={""}>{Moment().format("MMMM Do, YYYY")}</option>
           </select>
           <br />
           <label htmlFor="description"> Description: </label>
           <br />
           <input
-            placeholder={this.state.note.description}
+            placeholder={""}
             onChange={this.handleNoteChange}
             name="description"
             id="description"
             type="text"
-            value={this.state.note.description}
+            value={""}
           />
           <br />
           <label htmlFor="content">Content:</label>
           <br />
           <textarea
-            placeholder={this.state.note.content}
+            placeholder={""}
             onChange={this.handleNoteChange}
             name="content"
             id="content"
             type="text"
-            value={this.state.note.content}
+            value={
+              this.props.note.attributes.content || this.state.note.content
+            }
           />
           <br />
           <input type="submit" name="Submit" />
@@ -106,5 +104,12 @@ class EditNote extends React.Component {
     );
   }
 }
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps, "map", state);
+  return {
+    note: state.notes.filter(note => note.id === ownProps.match.params.id)[0]
+  };
+};
+// state.notes.filter(note => note.id === id);
 
-export default withRouter(EditNote);
+export default connect(mapStateToProps)(withRouter(EditNote));

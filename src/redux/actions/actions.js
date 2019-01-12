@@ -35,4 +35,22 @@ export const fetchNotes = () => {
   };
 };
 
-//.then(responseObj => Object.values(responseObj))
+export const getNote = id => {
+  return dispatch => {
+    return fetch(`http://localhost:3002/api/v1/notes/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem("jwt")
+      }
+    })
+      .then(res => res.json())
+      .then(note => dispatch({ type: "GET_NOTE", note }))
+      .catch(console.error);
+  };
+};
+
+export const editNote = id => {
+  return {
+    type: "EDIT_NOTE",
+    id
+  };
+};

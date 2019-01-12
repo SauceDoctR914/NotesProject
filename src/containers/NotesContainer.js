@@ -21,7 +21,6 @@ class NotesContainer extends Component {
     }
   };
   render() {
-    console.log(this.props, "anger");
     return (
       <React.Fragment>
         <Link
