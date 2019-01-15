@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchNotes } from "../redux/actions/actions";
 import NoteBookContainer from "../containers/NoteBookContainer";
+import NewNote from "../components/NewNote";
 class NotesContainer extends Component {
   componentDidMount() {
     this.props.fetchNotes();
@@ -31,7 +32,10 @@ class NotesContainer extends Component {
         >
           <button className="edit-note-button">Edit NoteBook</button>
         </Link>
-        <div>{this.mapNotes()}</div>
+        <div className="note-layout">{this.mapNotes()}</div>
+        <div className="NewNote">
+          <NewNote />
+        </div>
         <div>
           <NoteBookContainer notebook={this.props.location.state} />
         </div>

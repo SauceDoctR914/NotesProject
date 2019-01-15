@@ -34,19 +34,23 @@ class NoteBook extends Component {
       this.props.notebook.id
     );
     return (
-      <Link
-        to={{
-          pathname: `/homepage/notebook/${this.props.notebook.id}`,
-          state: { notebook: this.props.notebook }
-        }}
-      >
-        <div>
-          <div className="title-bar">
-            {this.props.notebook.attributes.title}
-          </div>
+      <React.Fragment>
+        <div className="notebook-bar">
+          <Link
+            to={{
+              pathname: `/homepage/notebook/${this.props.notebook.id}`,
+              state: { notebook: this.props.notebook }
+            }}
+          >
+            <div className="title-bar">
+              {this.props.notebook.attributes.title}
+            </div>
+          </Link>
+        </div>
+        <div className="NewNoteBook">
           <NewNoteBook />
         </div>
-      </Link>
+      </React.Fragment>
     );
   }
 }

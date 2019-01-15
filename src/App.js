@@ -13,6 +13,7 @@ import Note from "./components/Note";
 import NotesContainer from "./containers/NotesContainer";
 import EditNote from "./components/EditNote";
 import EditNoteBook from "./components/EditNoteBook";
+import "./App.css";
 
 class App extends Component {
   state = {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchNotes } from "../redux/actions/actions";
+import { editNote } from "../redux/actions/actions";
 import Moment from "moment";
 class EditNote extends React.Component {
   componentDidMount() {
@@ -11,11 +11,11 @@ class EditNote extends React.Component {
   //
   state = {
     note: {
-      id: "",
-      title: this.props.note.title,
-      created: "",
-      description: "",
-      content: ""
+      id: this.props.note.id,
+      title: this.props.note.attributes.title,
+      created: this.props.note.attributes.created,
+      description: this.props.note.attributes.description,
+      content: this.props.note.attributes.content
     }
   };
 
@@ -24,54 +24,39 @@ class EditNote extends React.Component {
       note: { ...this.state.note, [e.target.name]: e.target.value }
     });
   };
-  handleDateChange = event => {
-    this.setState({ created: event.target.value });
-  };
 
   handleSubmit = (e, obj) => {
     e.preventDefault();
-    this.editNote(this.state.note, this.state.note.id);
-  };
-
-  editNote = (note, id) => {
-    const URL = `http://localhost:3002/api/v1/notes/${id}`;
-    fetch(URL, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: localStorage.getItem("jwt")
-      },
-      body: JSON.stringify({
-        note: {
-          title: "",
-          created: "",
-          description: "",
-          content: ""
-        }
-      })
-    }).then(res => res.json());
+    this.props.editNote(this.state.note);
   };
 
   render() {
     console.log(this.props, "api");
     return (
       <div>
-        <form onSubmit={e => this.handleSubmit(e, this.state)}>
+        <form
+          onSubmit={e => this.handleSubmit(e, this.state)}
+          className="edit-note"
+        >
           <label htmlFor="title"> Note Title: </label>
           <br />
           <input
             placeholder={""}
             onChange={this.handleNoteChange}
             name="title"
-            id="title"
+            id="edit-title"
             type="text"
-            value={""}
+            value={this.state.note.title || ""}
           />
           <br />
           <label htmlFor="created"> Date Created: </label>
-          <select value={""} onChange={this.handleDateChange}>
-            <option value={""}>{Moment().format("MMMM Do, YYYY")}</option>
+          <select
+            value={this.state.note.created || ""}
+            onChange={this.handleDateChange}
+          >
+            <option value={this.state.note.created || ""}>
+              {Moment().format("MMMM Do, YYYY")}
+            </option>
           </select>
           <br />
           <label htmlFor="description"> Description: </label>
@@ -80,25 +65,22 @@ class EditNote extends React.Component {
             placeholder={""}
             onChange={this.handleNoteChange}
             name="description"
-            id="description"
+            id="edit-description"
             type="text"
-            value={""}
+            value={this.state.note.description || ""}
           />
           <br />
           <label htmlFor="content">Content:</label>
           <br />
           <textarea
-            placeholder={""}
             onChange={this.handleNoteChange}
             name="content"
-            id="content"
+            id="edit-content"
             type="text"
-            value={
-              this.props.note.attributes.content || this.state.note.content
-            }
+            value={this.state.note.content || ""}
           />
           <br />
-          <input type="submit" name="Submit" />
+          <input id="edit-submit" type="submit" name="Submit" />
         </form>
       </div>
     );
@@ -110,6 +92,12 @@ const mapStateToProps = (state, ownProps) => {
     note: state.notes.filter(note => note.id === ownProps.match.params.id)[0]
   };
 };
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return { editNote: note => dispatch(editNote(note, ownProps.id)) };
+};
 // state.notes.filter(note => note.id === id);
 
-export default connect(mapStateToProps)(withRouter(EditNote));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(EditNote));

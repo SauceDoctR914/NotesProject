@@ -1,32 +1,46 @@
-.App {
-  text-align: center;
+.edit-note {
+  color: red;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+/* note */
+.notetitle-div {
+}
+.date-div {
+}
+.desc-div {
+}
+.content-div {
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* notebook */
+.title-bar {
+  position: fixed;
+}
+.NewNoteBook {
+  margin-top: 5%;
+  position: relative;
+  margin-left: 40%;
+}
+/* parent div is notebook-bar */
+.notebook-bar {
+  /* position: fixed; */
+  margin-bottom: 20%;
+  position: absolute;
+}
+.newnb-div {
+  margin-top: 5%;
 }
 
-.App-link {
-  color: #61dafb;
+/* notescontainer */
+.note-layout {
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.NewNote {
+  position: relative;
+  margin-left: 20%;
+}
+
+/* translate */
+.select-translate {
+  width: 30%;
 }

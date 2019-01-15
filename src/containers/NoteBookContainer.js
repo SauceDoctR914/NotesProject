@@ -12,7 +12,8 @@ class NoteBookContainer extends Component {
 
   state = {
     value: "",
-    selectedOption: null
+    selectedOption: null,
+    translated: ""
   };
 
   languages = [
@@ -458,45 +459,70 @@ class NoteBookContainer extends Component {
       label: "Zulu"
     }
   ];
+  fromLang = "en";
+  text = this.props.location.state.notebook.attributes.title;
 
-  translateNote = () => {
-    let fromLang = "en";
-    let toLang = "no"; // translate to norwegian
-    let text = this.props.location.state.notebook.attributes.title;
-    console.log(text, "abcdefg");
-    let apiKey: "ba34c5dfb77907ceb9c351920c5e696d5490cc9a";
-    let url = `https://translation.googleapis.com/language/translate/v2?key=AIzaSyD_yxf_x5eaj2mp4Re1UcjeuRiHhbaHN-A`;
-    url += "&q=" + `encodeURI(text)`;
-    url += `&source=${fromLang}`;
-    url += `&target${toLang}`;
-    fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(response => {
-        console.log("response from google: ", response);
-      })
-      .catch(error => {
-        console.log("There was an error with the translation request: ", error);
-      });
+  handleChange = selectedOption => {
+    this.setState({ selectedOption });
+    console.log(`Option selected:`, selectedOption.value);
   };
+
+  translateNote = e => {
+    e.preventDefault();
+    if (this.state.selectedOption != null) {
+      let toLang = this.state.selectedOption.value;
+      let apiKey: "ba34c5dfb77907ceb9c351920c5e696d5490cc9a";
+      let url = `https://translation.googleapis.com/language/translate/v2?key=AIzaSyD_yxf_x5eaj2mp4Re1UcjeuRiHhbaHN-A&q=${
+        this.text
+      }&source=en&target=${toLang}`;
+      // url += "&q=" + `encodeURI(${this.text})`;
+      // let toLang = "es";
+      // url += `&source=${this.fromLang}`;
+      // url += `${this.toLang}`;
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(translation =>
+          this.setState({
+            translated: translation.data.translations[0].translatedText
+          })
+        )
+        .catch(error => {
+          console.log(
+            "There was an error with the translation request: ",
+            error
+          );
+        });
+    }
+  };
+
   render() {
-    console.log("Bey", this.props.location.state.notebook.attributes.title);
+    if (this.state.selectedOption != null) {
+      console.log(this.state.selectedOption.value, "texted");
+    }
     return (
       <div>
         <div>
           <div id="translation" />
         </div>
-        <Select
-          value={this.selectedOption}
-          onChange={this.translateNote}
-          options={this.languages}
-          placeholder={"Please select a language"}
-        />
+        <form onSubmit={e => this.translateNote(e)}>
+          <Select
+            className="select-translate"
+            value={this.selectedOption}
+            onChange={this.handleChange}
+            options={this.languages}
+            placeholder={"Please select a language"}
+          />
+          <input type="submit" name="Submit" />
+        </form>
+        <div className="translated">
+          {this.state.translated.length > 0 ? this.state.translated : "Loading"}
+        </div>
       </div>
     );
   }

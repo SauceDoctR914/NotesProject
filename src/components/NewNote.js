@@ -46,13 +46,14 @@ class NewNote extends Component {
           created: created,
           description: description,
           content: content,
-          notebook_id: this.props.notebookId
+          notebook_id: this.props.match.params.id
         }
       })
     }).then(res => res.json());
   };
 
   render() {
+    console.log(this.props, "notebook");
     return (
       <div>
         <form onSubmit={e => this.handleSubmit(e, this.state)}>

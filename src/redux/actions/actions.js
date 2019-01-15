@@ -48,9 +48,24 @@ export const getNote = id => {
   };
 };
 
-export const editNote = id => {
-  return {
-    type: "EDIT_NOTE",
-    id
+export const editNote = (note, id) => {
+  return dispatch => {
+    return fetch(`http://localhost:3002/api/v1/notes/${id}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: localStorage.getItem("jwt")
+      },
+      body: JSON.stringify({
+        note: {
+          title: note.title,
+          created: note.created,
+          description: note.description,
+          content: note.content
+        }
+      })
+    })
+      .then(res => res.json())
+      .then(note => dispatch({ type: "EDIT_NOTE", note }))
+      .catch(console.error);
   };
 };

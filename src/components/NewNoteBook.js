@@ -41,7 +41,7 @@ class NewNoteBook extends Component {
 
   render() {
     return (
-      <div>
+      <div className="newnb-div">
         <form onSubmit={e => this.handleSubmit(e, this.state)}>
           <label htmlFor="title"> Note Title: </label>
           <br />
