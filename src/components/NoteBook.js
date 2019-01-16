@@ -28,18 +28,12 @@ class NoteBook extends Component {
     }
   };
   render() {
-    console.log(
-      this.props.notebook.attributes,
-      "workornot",
-      this.props.notebook.id
-    );
     return (
       <React.Fragment>
         <div className="notebook-bar">
           <Link
             to={{
-              pathname: `/homepage/notebook/${this.props.notebook.id}`,
-              state: { notebook: this.props.notebook }
+              pathname: `/homepage/notebook/${this.props.notebook.id}`
             }}
           >
             <div className="title-bar">

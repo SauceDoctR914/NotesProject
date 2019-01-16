@@ -53,7 +53,6 @@ class NewNote extends Component {
   };
 
   render() {
-    console.log(this.props, "notebook");
     return (
       <div>
         <form onSubmit={e => this.handleSubmit(e, this.state)}>
@@ -73,6 +72,7 @@ class NewNote extends Component {
             value={this.state.created}
             onChange={this.handleNoteChange}
           >
+            <option value={this.state.created}>Select Date</option>
             <option value={this.state.created}>
               {Moment().format("MMMM Do, YYYY")}
             </option>

@@ -23,7 +23,14 @@ class UserPage extends Component {
   // you click to edit a note, then click to post a note.
 
   render() {
-    return <div className="userPage-div">{this.myNoteBooks()}</div>;
+    return (
+      <div className="userPage-div">
+        <button className="logOut" onClick={() => this.props.logOut()}>
+          Log Out{" "}
+        </button>
+        {this.myNoteBooks()}
+      </div>
+    );
   }
 }
 const mapStateToProps = state => {

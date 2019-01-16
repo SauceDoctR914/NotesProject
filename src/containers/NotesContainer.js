@@ -9,8 +9,10 @@ import NewNote from "../components/NewNote";
 class NotesContainer extends Component {
   componentDidMount() {
     this.props.fetchNotes();
-    const { notebook } = this.props.location.state;
+    console.log(this.props.notebook, "gavBro");
   }
+
+  // componentDidUpdate(){}
 
   mapNotes = () => {
     if (this.props.notes.length > 0) {
@@ -22,8 +24,12 @@ class NotesContainer extends Component {
     }
   };
   render() {
+    console.log(this.props, "plzzzzzz", this.props.currentUser);
     return (
       <React.Fragment>
+        <button className="logOut" onClick={() => this.props.logOut()}>
+          Log Out{" "}
+        </button>
         <Link
           to={{
             pathname: `${this.props.match.url}/editnotebook`,
@@ -36,20 +42,24 @@ class NotesContainer extends Component {
         <div className="NewNote">
           <NewNote />
         </div>
-        <div>
-          <NoteBookContainer notebook={this.props.location.state} />
-        </div>
+        <Link to={{ pathname: `/homepage/` }}>
+          <button className="back">Back</button>
+        </Link>
+        <div />
       </React.Fragment>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   if (state) {
     return {
       user: state.currentUser,
       jwt: state.currentUser.jwt,
-      notes: state.notes
+      notes: state.notes,
+      notebook: state.notebooks.filter(
+        notebook => notebook.id === ownProps.match.params.id
+      )[0]
     };
   }
 };
@@ -64,3 +74,5 @@ export default withRouter(
     mapDispatchToProps
   )(NotesContainer)
 );
+
+// <NoteBookContainer notebook={this.props.location.state} />

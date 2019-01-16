@@ -21,11 +21,13 @@ const userReducer = (state = initialState, action) => {
       return { ...state, notebooks: action.notebooks.data };
     }
     case "GET_NOTES": {
-      console.log({ ...state, notes: action.notes.data }, "reducer");
       return { ...state, notes: action.notes.data };
     }
     case "EDIT_NOTE": {
       return { ...state, note: action.note.data };
+    }
+    case "DELETE_NOTE": {
+      return { notes: state.notes.filter(note => note !== action.payload) };
     }
 
     default:

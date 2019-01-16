@@ -51,8 +51,10 @@ export const getNote = id => {
 export const editNote = (note, id) => {
   return dispatch => {
     return fetch(`http://localhost:3002/api/v1/notes/${id}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
         Authorization: localStorage.getItem("jwt")
       },
       body: JSON.stringify({
@@ -60,12 +62,28 @@ export const editNote = (note, id) => {
           title: note.title,
           created: note.created,
           description: note.description,
-          content: note.content
+          content: note.content,
+          notebook_id: note.notebookID,
+          user_id: note.userID
         }
       })
     })
       .then(res => res.json())
       .then(note => dispatch({ type: "EDIT_NOTE", note }))
       .catch(console.error);
+  };
+};
+
+export const deleteNote = (note, id) => {
+  return dispatch => {
+    const URL = `http://localhost:3002/api/v1/notes/${id}`;
+    fetch(URL, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem("jwt")
+      }
+    }).then(note => dispatch({ type: "DELETE_NOTE", note }));
   };
 };

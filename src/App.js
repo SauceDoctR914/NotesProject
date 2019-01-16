@@ -13,6 +13,7 @@ import Note from "./components/Note";
 import NotesContainer from "./containers/NotesContainer";
 import EditNote from "./components/EditNote";
 import EditNoteBook from "./components/EditNoteBook";
+import NoteBookContainer from "./containers/NoteBookContainer";
 import "./App.css";
 
 class App extends Component {
@@ -41,8 +42,9 @@ class App extends Component {
     }
   }
 
-  logout = () => {
+  logOut = () => {
     localStorage.removeItem("jwt");
+    this.props.history.push("/login");
   };
 
   render() {
@@ -57,29 +59,48 @@ class App extends Component {
           <Route
             exact
             path="/login"
-            render={routerProps => <LogIn {...routerProps} />}
+            render={routerProps => (
+              <LogIn {...routerProps} logOut={this.logOut} />
+            )}
           />
           <Route
             path={"/:email/homepage"}
-            render={routerProps => <UserPage {...routerProps} />}
+            render={routerProps => (
+              <UserPage {...routerProps} logOut={this.logOut} />
+            )}
           />
           <Route
             exact
             path="/homepage/notebook/:id"
-            render={routerProps => <NotesContainer {...routerProps} />}
+            render={routerProps => (
+              <NotesContainer {...routerProps} logOut={this.logOut} />
+            )}
           />
           <Route
             path="/:email/homepage/notes/:id"
-            render={routerProps => <Note {...routerProps} />}
+            render={routerProps => (
+              <Note {...routerProps} logOut={this.logOut} />
+            )}
           />
           <Route
             path="/homepage/notes/:id/editnote"
-            render={routerProps => <EditNote {...routerProps} />}
+            render={routerProps => (
+              <EditNote {...routerProps} logOut={this.logOut} />
+            )}
           />
           <Route
             exact
             path="/homepage/notebook/:id/editnotebook"
-            render={routerProps => <EditNoteBook {...routerProps} />}
+            render={routerProps => (
+              <EditNoteBook {...routerProps} logOut={this.logOut} />
+            )}
+          />
+          <Route
+            exact
+            path="/homepage/notes/:id/translate"
+            render={routerProps => (
+              <NoteBookContainer {...routerProps} logOut={this.logOut} />
+            )}
           />
         </Switch>
       </div>
@@ -87,21 +108,16 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  if (state) {
-    return {
-      jwt: state.currentUser.jwt
-    };
-  }
-};
+// const mapStateToProps = state => {
+//   if (state) {
+//     return {
+//       jwt: state.currentUser.jwt
+//     };
+//   }
+// };
 
 const mapDispatchToProps = dispatch => {
   return { fetchNoteBooks: () => dispatch(fetchNoteBooks()) };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
-);
+export default withRouter(connect(mapDispatchToProps)(App));

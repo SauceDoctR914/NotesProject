@@ -7,7 +7,7 @@ import { fetchNotes } from "../redux/actions/actions";
 import Select from "react-select";
 class NoteBookContainer extends Component {
   componentDidMount() {
-    const { notebook } = this.props.location.state;
+    this.props.fetchNotes();
   }
 
   state = {
@@ -460,21 +460,21 @@ class NoteBookContainer extends Component {
     }
   ];
   fromLang = "en";
-  text = this.props.location.state.notebook.attributes.title;
 
   handleChange = selectedOption => {
     this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption.value);
   };
 
   translateNote = e => {
     e.preventDefault();
-    if (this.state.selectedOption != null) {
+    if (
+      this.state.selectedOption != null &&
+      this.props.note.attributes.content
+    ) {
+      let text = this.props.note.attributes.content;
       let toLang = this.state.selectedOption.value;
       let apiKey: "ba34c5dfb77907ceb9c351920c5e696d5490cc9a";
-      let url = `https://translation.googleapis.com/language/translate/v2?key=AIzaSyD_yxf_x5eaj2mp4Re1UcjeuRiHhbaHN-A&q=${
-        this.text
-      }&source=en&target=${toLang}`;
+      let url = `https://translation.googleapis.com/language/translate/v2?key=AIzaSyD_yxf_x5eaj2mp4Re1UcjeuRiHhbaHN-A&q=${text}&source=en&target=${toLang}`;
       // url += "&q=" + `encodeURI(${this.text})`;
       // let toLang = "es";
       // url += `&source=${this.fromLang}`;
@@ -508,6 +508,9 @@ class NoteBookContainer extends Component {
     return (
       <div>
         <div>
+          <button className="logOut" onClick={() => this.props.logOut()}>
+            Log Out{" "}
+          </button>
           <div id="translation" />
         </div>
         <form onSubmit={e => this.translateNote(e)}>
@@ -523,17 +526,21 @@ class NoteBookContainer extends Component {
         <div className="translated">
           {this.state.translated.length > 0 ? this.state.translated : "Loading"}
         </div>
+        <Link
+          to={{ pathname: `/homepage/notebook/${this.props.match.params.id}` }}
+        >
+          <button className="back">Back</button>
+        </Link>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   if (state) {
+    console.log(ownProps, "ownPROPS", state);
     return {
-      user: state.currentUser,
-      jwt: state.currentUser.jwt,
-      notes: state.notes
+      note: state.notes.filter(note => note.id === ownProps.match.params.id)[0]
     };
   }
 };
@@ -542,4 +549,7 @@ const mapDispatchToProps = dispatch => {
   return { fetchNotes: () => dispatch(fetchNotes()) };
 };
 
-export default withRouter(NoteBookContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(NoteBookContainer));

@@ -14,7 +14,6 @@ class LogIn extends Component {
   handleSubmit = (e, obj) => {
     e.preventDefault();
     console.log("yo", e.target, obj);
-    this.logout();
     this.login(obj);
   };
 
