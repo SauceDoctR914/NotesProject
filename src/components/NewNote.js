@@ -29,6 +29,7 @@ class NewNote extends Component {
       this.state.note.description,
       this.state.note.content
     );
+    this.forceUpdate();
   };
 
   postNote = (title, created, description, content) => {
@@ -55,7 +56,10 @@ class NewNote extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={e => this.handleSubmit(e, this.state)}>
+        <form
+          className="newNoteForm"
+          onSubmit={e => this.handleSubmit(e, this.state)}
+        >
           <label htmlFor="title"> Note Title: </label>
           <br />
           <input

@@ -51,8 +51,6 @@ class NoteBook extends Component {
 const mapStateToProps = state => {
   if (state) {
     return {
-      currentUser: state.currentUser,
-      jwt: state.currentUser.jwt,
       notes: state.notes
     };
   }

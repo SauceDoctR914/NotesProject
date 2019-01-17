@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 class LogIn extends Component {
   state = {
     errors: false,
@@ -74,6 +74,13 @@ class LogIn extends Component {
           <input type="submit" name="Submit" />
         </form>
         <br />
+        <Link
+          to={{
+            pathname: `/signup`
+          }}
+        >
+          <button className="signup">Sign Up</button>
+        </Link>
       </div>
     );
   }

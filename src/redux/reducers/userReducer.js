@@ -5,7 +5,6 @@ const initialState = {
   },
   users: [],
   notebooks: [],
-  newNotebook: {},
   notes: []
 };
 

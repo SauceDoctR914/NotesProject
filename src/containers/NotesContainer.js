@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 import Note from "../components/Note";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchNotes } from "../redux/actions/actions";
+import { fetchNotes, fetchNoteBooks } from "../redux/actions/actions";
 import NoteBookContainer from "../containers/NoteBookContainer";
 import NewNote from "../components/NewNote";
 class NotesContainer extends Component {
   componentDidMount() {
     this.props.fetchNotes();
-    console.log(this.props.notebook, "gavBro");
+    this.props.fetchNoteBooks();
   }
 
-  // componentDidUpdate(){}
+  // componentDidUpdate() {
+  //   this.forceUpdate();
+  // }
 
   mapNotes = () => {
     if (this.props.notes.length > 0) {
@@ -24,28 +26,40 @@ class NotesContainer extends Component {
     }
   };
   render() {
-    console.log(this.props, "plzzzzzz", this.props.currentUser);
+    console.log(this.props, "plzzzzzz");
     return (
-      <React.Fragment>
+      <React.Fragment
+        key={this.props.match.params.id}
+        className="note-container"
+      >
         <button className="logOut" onClick={() => this.props.logOut()}>
-          Log Out{" "}
+          Log Out
         </button>
-        <Link
-          to={{
-            pathname: `${this.props.match.url}/editnotebook`,
-            state: { notebook: this.notebook }
-          }}
-        >
-          <button className="edit-note-button">Edit NoteBook</button>
-        </Link>
-        <div className="note-layout">{this.mapNotes()}</div>
-        <div className="NewNote">
-          <NewNote />
-        </div>
         <Link to={{ pathname: `/homepage/` }}>
           <button className="back">Back</button>
         </Link>
-        <div />
+
+        {this.props.notebook ? (
+          <h2 id="notebook-title">{this.props.notebook.attributes.title}</h2>
+        ) : null}
+        <div className="note-layout">
+          <div className="notes">
+            {this.mapNotes()}
+            <div className="editDiv" />
+          </div>
+          <div className="NewNote">
+            <NewNote key={this.props.match.params.id} />
+          </div>
+        </div>
+        <Link
+          to={{
+            pathname: `${this.props.match.url}/editnotebook`
+          }}
+        >
+          <button className="edit-note-button" key="edit-button">
+            Edit NoteBook
+          </button>
+        </Link>
       </React.Fragment>
     );
   }
@@ -54,8 +68,6 @@ class NotesContainer extends Component {
 const mapStateToProps = (state, ownProps) => {
   if (state) {
     return {
-      user: state.currentUser,
-      jwt: state.currentUser.jwt,
       notes: state.notes,
       notebook: state.notebooks.filter(
         notebook => notebook.id === ownProps.match.params.id
@@ -65,7 +77,10 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return { fetchNotes: () => dispatch(fetchNotes()) };
+  return {
+    fetchNotes: () => dispatch(fetchNotes()),
+    fetchNoteBooks: () => dispatch(fetchNoteBooks())
+  };
 };
 
 export default withRouter(

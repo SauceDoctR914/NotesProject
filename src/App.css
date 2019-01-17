@@ -1,3 +1,7 @@
+.App {
+  min-width: 100%;
+}
+
 .edit-note {
   color: red;
 }
@@ -32,15 +36,83 @@
 }
 
 /* notescontainer */
+.note-container {
+  min-width: 55%;
+}
 .note-layout {
+  min-width: 40%;
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex: auto;
+}
+
+.notes {
+  /* flex-wrap: wrap;
+  justify-content: wrap; */
+  float: left;
+  width: 40%;
+  height: 100%;
+  flex: 0 0 500px;
+}
+#notebook-title {
+  width: 20%;
+  height: 10%;
 }
 
 .NewNote {
-  position: relative;
-  margin-left: 20%;
+  float: right;
+  margin-left: 60%;
 }
 
+.logOut {
+  height: 50%;
+  width: 50%;
+  align: right;
+}
+
+/* note */
+.individual-note {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 5%;
+  background: red;
+}
+
+.button {
+  position: center;
+  border-radius: 4px;
+  margin: 1%;
+}
+.delete-note {
+  border-radius: 4px;
+  border-style: outset;
+  margin: 2%;
+}
+.edit-button {
+  height: 100%;
+  border-radius: 4px;
+  width: 30%;
+  margin: 2%;
+}
 /* translate */
 .select-translate {
   width: 30%;
+}
+
+.translate-button {
+  border-radius: 4px;
+  border-style: outset;
+}
+
+/*  newNote */
+.newNoteForm {
+  float: right;
+}
+#title {
+}
+
+#content {
+  width: 500px;
+  height: 300px;
 }
