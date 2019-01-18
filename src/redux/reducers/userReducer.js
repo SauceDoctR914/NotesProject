@@ -14,7 +14,7 @@ const userReducer = (state = initialState, action) => {
       return { ...state, currentUser: action.getUser };
     }
     case "GET_USERS": {
-      return { ...state, users: action.payload };
+      return { ...state, users: action.users.data };
     }
     case "GET_NOTEBOOKS": {
       return { ...state, notebooks: action.notebooks.data };

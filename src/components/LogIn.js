@@ -46,6 +46,7 @@ class LogIn extends Component {
       });
   };
   render() {
+    console.log(this.props, "login");
     return (
       <div>
         <h1 style={{ marginTop: "20vh", marginBottom: "5vh" }} />

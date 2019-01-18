@@ -20,16 +20,16 @@ class NewNote extends Component {
   // handleDateChange = event => {
   //   this.setState({ created: event.target.value });
   // };
-
+  //this.setState({this.state})
   handleSubmit = (e, obj) => {
     e.preventDefault();
+    e.persist();
     this.postNote(
       this.state.note.title,
       this.state.note.created,
       this.state.note.description,
       this.state.note.content
     );
-    this.forceUpdate();
   };
 
   postNote = (title, created, description, content) => {

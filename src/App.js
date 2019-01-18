@@ -5,7 +5,7 @@ import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import UserPage from "./containers/UserPage";
 import { connect } from "react-redux";
-import { fetchNoteBooks } from "./redux/actions/actions";
+import { fetchNoteBooks, getUsers } from "./redux/actions/actions";
 import { fetchNotes } from "./redux/actions/actions";
 import NoteBook from "./components/NoteBook";
 import NewNote from "./components/NewNote";
@@ -117,7 +117,7 @@ class App extends Component {
 // };
 
 const mapDispatchToProps = dispatch => {
-  return { fetchNoteBooks: () => dispatch(fetchNoteBooks()) };
+  return { getUsers: () => dispatch(getUsers()) };
 };
 
 export default withRouter(connect(mapDispatchToProps)(App));
