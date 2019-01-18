@@ -5,11 +5,6 @@ import { connect } from "react-redux";
 import { deleteNote } from "../redux/actions/actions";
 import EditNote from "./EditNote";
 class Note extends Component {
-  handleDelete = (e, note, id) => {
-    e.preventDefault();
-    this.props.deleteNote(note, id);
-    this.props.history.push(`/homepage/notebook/1`);
-  };
   render() {
     console.log(this.props.note.attributes.created, "AY");
     return (
@@ -39,7 +34,7 @@ class Note extends Component {
             <button
               className="delete-note"
               onClick={(e, note, id) =>
-                this.handleDelete(e, this.props.note, this.props.note.id)
+                this.props.deleteNote(e, this.props.note, this.props.note.id)
               }
             >
               Delete Note
@@ -57,20 +52,7 @@ class Note extends Component {
     );
   }
 }
-const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps, "map", state);
-  return {
-    note: state.notes.filter(note => note.id === ownProps.note.id)[0]
-  };
-};
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    deleteNote: note => dispatch(deleteNote(note, ownProps.note.id))
-  };
-};
+
 // state.notes.filter(note => note.id === id);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(Note));
+export default withRouter(Note);

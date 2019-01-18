@@ -5,8 +5,13 @@ import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import UserPage from "./containers/UserPage";
 import { connect } from "react-redux";
-import { fetchNoteBooks, getUsers } from "./redux/actions/actions";
-import { fetchNotes } from "./redux/actions/actions";
+import {
+  fetchNoteBooks,
+  getUsers,
+  fetchNotes,
+  fetchNotebooks
+} from "./redux/actions/actions";
+
 import NoteBook from "./components/NoteBook";
 import NewNote from "./components/NewNote";
 import Note from "./components/Note";
@@ -23,6 +28,9 @@ class App extends Component {
   };
 
   componentDidMount() {
+    this.props.getUsers();
+    this.props.fetchNotes();
+    this.props.fetchNoteBooks();
     const URL = "http://localhost:3002/api/v1/users";
     if (localStorage.getItem("jwt")) {
       fetch(URL, {
@@ -77,6 +85,10 @@ class App extends Component {
                 {...routerProps}
                 logOut={this.logOut}
                 location={window.location}
+                users={this.props.users}
+                currentUser={this.props.currentUser}
+                notes={this.props.notes}
+                notebooks={this.props.notebooks}
               />
             )}
           />
@@ -112,16 +124,30 @@ class App extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   if (state) {
-//     return {
-//       jwt: state.currentUser.jwt
-//     };
-//   }
-// };
-
-const mapDispatchToProps = dispatch => {
-  return { getUsers: () => dispatch(getUsers()) };
+const mapStateToProps = (state, ownProps) => {
+  if (state) {
+    return {
+      users: state.users,
+      notes: state.notes,
+      currentUser: state.users.filter(
+        user => user.attributes.email === ownProps.match.params.email
+      ),
+      notebooks: state.notebooks
+    };
+  }
 };
 
-export default withRouter(connect(mapDispatchToProps)(App));
+const mapDispatchToProps = dispatch => {
+  return {
+    getUsers: () => dispatch(getUsers()),
+    fetchNotes: () => dispatch(fetchNotes()),
+    fetchNoteBooks: () => dispatch(fetchNoteBooks())
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);

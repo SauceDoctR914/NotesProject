@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import Note from "../components/Note";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchNotes, fetchNoteBooks, getUsers } from "../redux/actions/actions";
+import {
+  fetchNotes,
+  fetchNoteBooks,
+  getUsers,
+  deleteNote
+} from "../redux/actions/actions";
 import NoteBookContainer from "../containers/NoteBookContainer";
 import NewNote from "../components/NewNote";
 class NotesContainer extends Component {
@@ -12,22 +17,38 @@ class NotesContainer extends Component {
     this.props.fetchNoteBooks();
     this.props.getUsers();
   }
-
+  state = {
+    notes: []
+  };
   // componentDidUpdate() {
   //   this.forceUpdate();
   // }
 
+  handleDelete = (e, note, id) => {
+    console.log("this and that and this");
+    e.preventDefault();
+    this.props.deleteNote(note, id);
+    this.setState({ notes: this.props.notes });
+  };
+
   mapNotes = () => {
     if (this.props.notes.length > 0) {
       return this.props.notes.map(note => {
-        return <Note key={note.id} note={note} currentUser={this.props.user} />;
+        return (
+          <Note
+            key={note.id}
+            note={note}
+            currentUser={this.props.currentUser}
+            deleteNote={this.handleDelete}
+          />
+        );
       });
     } else {
       return <div>No Notes</div>;
     }
   };
   render() {
-    console.log(this.props.currentUsers, "plzzzzzz");
+    console.log(this.props.currentUser, "plzzzzzz", this.props.notebook);
     return (
       <React.Fragment key={this.props.match.params.id}>
         <div className="note-container">
@@ -58,12 +79,10 @@ class NotesContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  if (state) {
+  console.log(state, "state", ownProps.match);
+  if (state.users && state.notes && state.notebooks) {
     return {
       notes: state.notes,
-      currentUser: state.users.filter(
-        user => user.attributes.email === ownProps.match.params.email
-      ),
       notebook: state.notebooks.filter(
         notebook => notebook.id === ownProps.match.params.id
       )[0]
@@ -71,11 +90,12 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchNotes: () => dispatch(fetchNotes()),
     fetchNoteBooks: () => dispatch(fetchNoteBooks()),
-    getUsers: () => dispatch(getUsers())
+    getUsers: () => dispatch(getUsers()),
+    deleteNote: (note, id) => dispatch(deleteNote(note, id))
   };
 };
 
