@@ -40,7 +40,7 @@ class UserPage extends Component {
         <button className="logOut" onClick={() => this.props.logOut()}>
           Log Out{" "}
         </button>
-        {this.myNoteBooks()}
+        <div className="notebooks-list">{this.myNoteBooks()}</div>
         <div className="newNoteBook">
           <NewNoteBook />
         </div>

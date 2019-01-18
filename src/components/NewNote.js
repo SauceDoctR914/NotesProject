@@ -56,6 +56,7 @@ class NewNote extends Component {
   render() {
     return (
       <div>
+        <h3>Add a Note:</h3>
         <form
           className="newNoteForm"
           onSubmit={e => this.handleSubmit(e, this.state)}

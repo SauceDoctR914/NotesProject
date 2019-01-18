@@ -5,6 +5,11 @@ import { connect } from "react-redux";
 import { deleteNote } from "../redux/actions/actions";
 import EditNote from "./EditNote";
 class Note extends Component {
+  handleDelete = (e, note, id) => {
+    e.preventDefault();
+    this.props.deleteNote(note, id);
+    this.props.history.push(`/homepage/notebook/1`);
+  };
   render() {
     console.log(this.props.note.attributes.created, "AY");
     return (
@@ -33,8 +38,8 @@ class Note extends Component {
             </Link>
             <button
               className="delete-note"
-              onClick={(note, id) =>
-                this.props.deleteNote(this.props.note, this.props.note.id)
+              onClick={(e, note, id) =>
+                this.handleDelete(e, this.props.note, this.props.note.id)
               }
             >
               Delete Note

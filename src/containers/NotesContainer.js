@@ -47,15 +47,7 @@ class NotesContainer extends Component {
               <div className="editDiv" />
             </div>
           </div>
-          <Link
-            to={{
-              pathname: `${this.props.match.url}/editnotebook`
-            }}
-          >
-            <button className="edit-note-button" key="edit-button">
-              Edit NoteBook
-            </button>
-          </Link>
+
           <div className="NewNote">
             <NewNote key={this.props.match.params.id} />
           </div>

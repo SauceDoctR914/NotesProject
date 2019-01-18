@@ -41,9 +41,6 @@ class NoteBook extends Component {
             </div>
           </Link>
         </div>
-        <div className="NewNoteBook">
-          <NewNoteBook />
-        </div>
       </React.Fragment>
     );
   }
