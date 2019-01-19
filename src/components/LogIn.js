@@ -46,10 +46,9 @@ class LogIn extends Component {
       });
   };
   render() {
-    console.log(this.props, "login");
     return (
-      <div>
-        <h1 style={{ marginTop: "20vh", marginBottom: "5vh" }} />
+      <div className="login-div">
+        <h1 style={{ marginTop: "20vh", marginBottom: "5vh" }}>Login</h1>
         <form onSubmit={e => this.handleSubmit(e, this.state)}>
           <label htmlFor="email"> E-mail: </label>
           <br />

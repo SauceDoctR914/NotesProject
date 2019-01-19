@@ -26,7 +26,10 @@ const userReducer = (state = initialState, action) => {
       return { ...state, note: action.note.data };
     }
     case "DELETE_NOTE": {
-      return { notes: state.notes.filter(note => note !== action.payload) };
+      return {
+        ...state,
+        notes: state.notes.filter(note => note !== action.payload)
+      };
     }
 
     default:

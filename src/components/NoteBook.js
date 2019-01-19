@@ -33,11 +33,14 @@ class NoteBook extends Component {
         <div className="notebook-bar">
           <Link
             to={{
-              pathname: `/homepage/notebook/${this.props.notebook.id}`
+              pathname: `/homepage/notebook/${this.props.notebook.id}`,
+              state: { currentUser: this.props.currentUser }
             }}
           >
             <div className="title-bar">
               {this.props.notebook.attributes.title}
+              {this.props.notebook.relationships.user.data.id}
+              yo
             </div>
           </Link>
         </div>

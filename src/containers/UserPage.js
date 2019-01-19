@@ -19,10 +19,18 @@ class UserPage extends Component {
     if (this.props.notebooks.length > 0 && this.props.currentUser.length > 0) {
       return this.props.notebooks
         .filter(notebook => {
-          return notebook.relationships.user.id === this.props.currentUser.id;
+          return (
+            notebook.relationships.user.data.id === this.props.currentUser[0].id
+          );
         })
         .map(notebook => {
-          return <NoteBook key={notebook.id} notebook={notebook} />;
+          return (
+            <NoteBook
+              key={notebook.id}
+              notebook={notebook}
+              currentUser={this.props.currentUser}
+            />
+          );
         });
     } else {
       return <div>No Notebooks</div>;
@@ -34,7 +42,7 @@ class UserPage extends Component {
   // you click to edit a note, then click to post a note.
 
   render() {
-    console.log(this.props.currentUser, "gavin");
+    console.log(this.props, "userguy");
     return (
       <div className="userPage-div">
         <button className="logOut" onClick={() => this.props.logOut()}>
@@ -42,7 +50,7 @@ class UserPage extends Component {
         </button>
         <div className="notebooks-list">{this.myNoteBooks()}</div>
         <div className="newNoteBook">
-          <NewNoteBook />
+          <NewNoteBook currentUser={this.props.currentUser} />
         </div>
       </div>
     );
@@ -50,7 +58,6 @@ class UserPage extends Component {
 }
 const mapStateToProps = (state, ownProps) => {
   if (state) {
-    console.log("users", state.users);
     return {
       currentUser: state.users.filter(
         user => user.attributes.email === ownProps.match.params.email

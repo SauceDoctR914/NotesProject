@@ -9,7 +9,7 @@ import {
   getUsers,
   deleteNote
 } from "../redux/actions/actions";
-import NoteBookContainer from "../containers/NoteBookContainer";
+import TranslateText from "../containers/TranslateText";
 import NewNote from "../components/NewNote";
 class NotesContainer extends Component {
   componentDidMount() {
@@ -22,24 +22,29 @@ class NotesContainer extends Component {
   // }
 
   handleDelete = (e, note, id) => {
-    console.log("this and that and this");
     e.preventDefault();
     this.props.deleteNote(note, id);
     this.setState({ notes: this.props.notes });
+    window.location.reload();
   };
 
   mapNotes = () => {
     if (this.props.notes.length > 0) {
-      return this.props.notes.map(note => {
-        return (
-          <Note
-            key={note.id}
-            note={note}
-            currentUser={this.props.currentUser}
-            deleteNote={this.handleDelete}
-          />
-        );
-      });
+      return this.props.notes
+        .filter(
+          note =>
+            note.relationships.notebook.data.id === this.props.match.params.id
+        )
+        .map(note => {
+          return (
+            <Note
+              key={note.id}
+              note={note}
+              currentUser={this.props.currentUser}
+              deleteNote={this.handleDelete}
+            />
+          );
+        });
     } else {
       return <div>No Notes</div>;
     }
@@ -52,23 +57,20 @@ class NotesContainer extends Component {
       content: "",
       notebook_id: ""
     },
-    notes: []
-  };
-
-  handleNoteChange = e => {
-    const newNote = { ...this.state.note, [e.target.name]: e.target.value };
-    this.setState({ note: newNote });
+    notes: [],
+    currentUser: this.props.location.state.currentUser[0]
   };
 
   handleSubmit = (e, obj) => {
     e.preventDefault();
     e.persist();
     this.postNote(
-      this.state.note.title,
-      this.state.note.created,
-      this.state.note.description,
-      this.state.note.content
+      obj.note.title,
+      obj.note.created,
+      obj.note.description,
+      obj.note.content
     );
+    window.location.reload();
   };
 
   postNote = (title, created, description, content) => {
@@ -93,14 +95,15 @@ class NotesContainer extends Component {
   };
 
   render() {
-    console.log(this.props, "plzzzzzz", this.props.notebook);
+    console.log(this.props, "AAA");
+
     return (
       <React.Fragment key={this.props.match.params.id}>
         <div className="note-container">
           <button className="logOut" onClick={() => this.props.logOut()}>
             Log Out
           </button>
-          <Link to={{ pathname: `/homepage/` }}>
+          <Link to={`/${this.state.currentUser.attributes.email}/homepage/`}>
             <button className="back">Back</button>
           </Link>
 
@@ -118,6 +121,10 @@ class NotesContainer extends Component {
             <NewNote
               key={this.props.match.params.id}
               handleSubmit={this.handleSubmit}
+              title={this.state.note.title}
+              created={this.state.note.created}
+              description={this.state.note.description}
+              content={this.state.note.content}
             />
           </div>
         </div>
@@ -127,16 +134,14 @@ class NotesContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state, "state", ownProps.match);
+  console.log(state, "state", ownProps);
   if (state.users && state.notes && state.notebooks) {
     return {
       notes: state.notes,
       notebook: state.notebooks.filter(
         notebook => notebook.id === ownProps.match.params.id
       )[0],
-      currentUser: state.users.filter(
-        user => user.attributes.email === ownProps.match.params.email
-      )
+      users: state.users
     };
   }
 };

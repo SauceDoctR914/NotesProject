@@ -2,6 +2,19 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Moment from "moment";
 class NewNote extends Component {
+  state = {
+    note: {
+      title: "",
+      created: "",
+      description: "",
+      content: "",
+      notebook_id: ""
+    }
+  };
+  handleNoteChange = e => {
+    const newNote = { ...this.state.note, [e.target.name]: e.target.value };
+    this.setState({ note: newNote });
+  };
   render() {
     return (
       <div>
@@ -17,17 +30,17 @@ class NewNote extends Component {
             name="title"
             id="title"
             type="text"
-            value={this.state.note.title}
+            value={this.state.title}
           />
           <br />
           <label htmlFor="created"> Date Created: </label>
           <select
             name="created"
-            value={this.state.created}
+            value={this.state.note.created}
             onChange={this.handleNoteChange}
           >
-            <option value={this.state.created}>Select Date</option>
-            <option value={this.state.created}>
+            <option>Select Date</option>
+            <option value={this.state.note.created}>
               {Moment().format("MMMM Do, YYYY")}
             </option>
           </select>

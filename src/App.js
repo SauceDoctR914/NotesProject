@@ -18,7 +18,7 @@ import Note from "./components/Note";
 import NotesContainer from "./containers/NotesContainer";
 import EditNote from "./components/EditNote";
 import EditNoteBook from "./components/EditNoteBook";
-import NoteBookContainer from "./containers/NoteBookContainer";
+import TranslateText from "./containers/TranslateText";
 import "./App.css";
 
 class App extends Component {
@@ -56,6 +56,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("thisguy", this.props);
     return (
       <div className="App">
         <Switch location={this.props.location}>
@@ -85,14 +86,11 @@ class App extends Component {
                 {...routerProps}
                 logOut={this.logOut}
                 location={window.location}
-                users={this.props.users}
-                currentUser={this.props.currentUser}
-                notes={this.props.notes}
-                notebooks={this.props.notebooks}
               />
             )}
           />
           <Route
+            exact
             path="/:email/homepage/notes/:id"
             render={routerProps => (
               <Note {...routerProps} logOut={this.logOut} />
@@ -115,7 +113,7 @@ class App extends Component {
             exact
             path="/homepage/notes/:id/translate"
             render={routerProps => (
-              <NoteBookContainer {...routerProps} logOut={this.logOut} />
+              <TranslateText {...routerProps} logOut={this.logOut} />
             )}
           />
         </Switch>

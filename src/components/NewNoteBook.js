@@ -8,9 +8,12 @@ class NewNoteBook extends Component {
     }
   };
 
-  handleNoteChange = e => {
-    const newNote = { ...this.state.note, [e.target.name]: e.target.value };
-    this.setState({ note: newNote });
+  handleNoteBookChange = e => {
+    const newNoteBook = {
+      ...this.state.notebook,
+      [e.target.name]: e.target.value
+    };
+    this.setState({ noteBook: newNoteBook });
   };
 
   // handleDateChange = event => {
@@ -19,11 +22,11 @@ class NewNoteBook extends Component {
 
   handleSubmit = (e, obj) => {
     e.preventDefault();
-    this.postNoteBook(this.state.notebook.title);
+    this.postNoteBook(this.state.notebook, this.props.currentUser.id);
   };
 
-  postNoteBook = title => {
-    const URL = "http://localhost:3002/api/v1/notes";
+  postNoteBook = (notebook, id) => {
+    const URL = "http://localhost:3002/api/v1/notebooks";
     fetch(URL, {
       method: "POST",
       headers: {
@@ -33,13 +36,15 @@ class NewNoteBook extends Component {
       },
       body: JSON.stringify({
         notebook: {
-          title: title
+          title: notebook.title,
+          user_id: id
         }
       })
     }).then(res => res.json());
   };
 
   render() {
+    console.log(this.props.currentUser, "guy");
     return (
       <div className="newnb-div">
         <form onSubmit={e => this.handleSubmit(e, this.state)}>
@@ -50,7 +55,7 @@ class NewNoteBook extends Component {
             name="title"
             id="title"
             type="text"
-            value={this.state.notebook.title}
+            // value={this.state.notebook.title || ""}
           />
           <br />
 

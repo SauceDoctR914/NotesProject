@@ -54,8 +54,8 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1 style={{ marginTop: "20vh", marginBottom: "5vh" }} />
+      <div className="signup-div">
+        <h1 style={{ marginTop: "20vh", marginBottom: "5vh" }}>Sign-Up</h1>
         <form onSubmit={e => this.handleSubmit(e, this.state)}>
           <label htmlFor="email"> E-mail: </label>
           <br />
