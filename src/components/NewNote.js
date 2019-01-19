@@ -2,64 +2,13 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Moment from "moment";
 class NewNote extends Component {
-  state = {
-    note: {
-      title: "",
-      created: "",
-      description: "",
-      content: "",
-      notebook_id: ""
-    }
-  };
-
-  handleNoteChange = e => {
-    const newNote = { ...this.state.note, [e.target.name]: e.target.value };
-    this.setState({ note: newNote });
-  };
-
-  // handleDateChange = event => {
-  //   this.setState({ created: event.target.value });
-  // };
-  //this.setState({this.state})
-  handleSubmit = (e, obj) => {
-    e.preventDefault();
-    e.persist();
-    this.postNote(
-      this.state.note.title,
-      this.state.note.created,
-      this.state.note.description,
-      this.state.note.content
-    );
-  };
-
-  postNote = (title, created, description, content) => {
-    const URL = "http://localhost:3002/api/v1/notes";
-    fetch(URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: localStorage.getItem("jwt")
-      },
-      body: JSON.stringify({
-        note: {
-          title: title,
-          created: created,
-          description: description,
-          content: content,
-          notebook_id: this.props.match.params.id
-        }
-      })
-    }).then(res => res.json());
-  };
-
   render() {
     return (
       <div>
         <h3>Add a Note:</h3>
         <form
           className="newNoteForm"
-          onSubmit={e => this.handleSubmit(e, this.state)}
+          onSubmit={e => this.props.handleSubmit(e, this.state)}
         >
           <label htmlFor="title"> Note Title: </label>
           <br />

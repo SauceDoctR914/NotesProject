@@ -17,9 +17,6 @@ class NotesContainer extends Component {
     this.props.fetchNoteBooks();
     this.props.getUsers();
   }
-  state = {
-    notes: []
-  };
   // componentDidUpdate() {
   //   this.forceUpdate();
   // }
@@ -47,8 +44,56 @@ class NotesContainer extends Component {
       return <div>No Notes</div>;
     }
   };
+  state = {
+    note: {
+      title: "",
+      created: "",
+      description: "",
+      content: "",
+      notebook_id: ""
+    },
+    notes: []
+  };
+
+  handleNoteChange = e => {
+    const newNote = { ...this.state.note, [e.target.name]: e.target.value };
+    this.setState({ note: newNote });
+  };
+
+  handleSubmit = (e, obj) => {
+    e.preventDefault();
+    e.persist();
+    this.postNote(
+      this.state.note.title,
+      this.state.note.created,
+      this.state.note.description,
+      this.state.note.content
+    );
+  };
+
+  postNote = (title, created, description, content) => {
+    const URL = "http://localhost:3002/api/v1/notes";
+    fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem("jwt")
+      },
+      body: JSON.stringify({
+        note: {
+          title: title,
+          created: created,
+          description: description,
+          content: content,
+          notebook_id: this.props.match.params.id
+        }
+      })
+    }).then(res => res.json());
+  };
+
   render() {
-    console.log(this.props.currentUser, "plzzzzzz", this.props.notebook);
+    console.log(this.props, "plzzzzzz", this.props.notebook);
     return (
       <React.Fragment key={this.props.match.params.id}>
         <div className="note-container">
@@ -70,7 +115,10 @@ class NotesContainer extends Component {
           </div>
 
           <div className="NewNote">
-            <NewNote key={this.props.match.params.id} />
+            <NewNote
+              key={this.props.match.params.id}
+              handleSubmit={this.handleSubmit}
+            />
           </div>
         </div>
       </React.Fragment>
@@ -85,7 +133,10 @@ const mapStateToProps = (state, ownProps) => {
       notes: state.notes,
       notebook: state.notebooks.filter(
         notebook => notebook.id === ownProps.match.params.id
-      )[0]
+      )[0],
+      currentUser: state.users.filter(
+        user => user.attributes.email === ownProps.match.params.email
+      )
     };
   }
 };
