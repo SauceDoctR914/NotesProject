@@ -13,17 +13,17 @@ class NewNoteBook extends Component {
       ...this.state.notebook,
       [e.target.name]: e.target.value
     };
-    this.setState({ noteBook: newNoteBook });
+    this.setState({ notebook: newNoteBook });
   };
 
-  // handleDateChange = event => {
-  //   this.setState({ created: event.target.value });
+  // handleSubmit = (e, obj) => {
+  //   e.preventDefault();
+  //   this.props.handleNoteBookSubmit(obj);
   // };
-
   render() {
     return (
       <div className="newnb-div">
-        <form onSubmit={e => this.props.handleSubmit(e, this.state)}>
+        <form onSubmit={e => this.props.handleNoteBookSubmit(e, this.state)}>
           <label htmlFor="title"> NoteBook Title: </label>
           <br />
           <input

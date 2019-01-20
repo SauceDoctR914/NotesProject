@@ -20,11 +20,14 @@ class UserPage extends Component {
     }
   };
 
-  handleSubmit = (e, obj) => {
+  handleNoteBookSubmit = (e, obj) => {
     e.preventDefault();
+    e.persist();
+
     this.postNoteBook(obj.notebook.title, this.props.currentUser.id);
   };
   postNoteBook = (title, id) => {
+    console.log("THIS");
     const URL = "http://localhost:3002/api/v1/notebooks";
     fetch(URL, {
       method: "POST",
@@ -56,7 +59,7 @@ class UserPage extends Component {
               key={notebook.id}
               notebook={notebook}
               currentUser={this.props.currentUser}
-              handleSubmit={this.handleSubmit}
+              handleNoteBookSubmit={this.handleNoteBookSubmit}
             />
           );
         });
@@ -77,7 +80,10 @@ class UserPage extends Component {
         </button>
         <div className="notebooks-list">{this.myNoteBooks()}</div>
         <div className="newNoteBook">
-          <NewNoteBook currentUser={this.props.currentUser} />
+          <NewNoteBook
+            currentUser={this.props.currentUser}
+            handleNoteBookSubmit={this.handleNoteBookSubmit}
+          />
         </div>
       </div>
     );

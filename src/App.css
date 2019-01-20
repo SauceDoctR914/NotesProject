@@ -1,7 +1,3 @@
-.App {
-  min-width: 100%;
-}
-
 .edit-note {
   color: red;
 }
@@ -17,9 +13,7 @@
 }
 
 /* notebook */
-.title-bar {
-  /* position: absolute; */
-}
+
 .NewNoteBook {
   margin-top: 5%;
 
@@ -69,13 +63,21 @@
   width: 40%;
   margin-left: 70%;
 }
-
+.notebooks-list {
+  width: 100vh;
+  height: 100vh;
+}
+.title-bar {
+  width: 150vh;
+  height: 10vh; /* position: absolute; */
+}
 .logOut {
   float: right;
   height: 50%;
   width: 10%;
   margin-right: 1%;
   align: right;
+  right: 0;
 }
 
 /* note */
@@ -90,9 +92,6 @@
   border-radius: 9px; */
 }
 
-/* notebooks: state.notebooks.filter(
-  notebook => notebook.id === ownProps.user.id
-) */
 .button {
   position: center;
   border-radius: 4px;
@@ -168,8 +167,76 @@
 }
 /*
 login */
-
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  min-width: 750px;
+  min-height: 750px;
+  /* max-height: 850px;
+  max-width: 850px; */
+  background-repeat: no-repeat;
+  font-family: Poppins-Regular, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+}
+.App {
+  width: 100%;
+  height: 100%;
+}
+.login-container {
+  height: 150vh;
+  width: 130vh;
+  position: absolute;
+  background-size: stretch;
+  background-repeat: no-repeat;
+  background-image: url("https://images.unsplash.com/photo-1533103601126-a65ecc2cfc39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80");
+}
 .login-div {
-  position: fixed;
+  min-height: 114.5vh;
+  min-width: 40vh;
+  background-color: #f7f7f7;
+  padding: 173px 55px 55px;
+  position: relative;
+  margin-left: 129vh;
+  border: 1px solid black;
+  background: #2575fc;
+  /* background: linear-gradient(left, #6a11cb, #2575fc);
+  background: linear-gradient(left, #6a11cb, #2575fc);
+  background: linear-gradient(left, #6a11cb, #2575fc);
+  background: linear-gradient(left, #6a11cb, #2575fc);
+  border-radius: 9px; */
+}
+.login-title {
+  text-align: center;
+  overflow: auto;
+}
+.login-form {
+  justify-content: center;
+  text-align: center;
+  border-radius: 5px;
+}
+
+#sign-in {
+  text-align: center;
+  border-radius: 5px;
+}
+#email {
+  text-align: center;
+  border-radius: 5px;
+}
+#password {
+  justify-content: center;
+  text-align: center;
+  border-radius: 5px;
+}
+#signup {
+  /* justify-content: center; */
   align-items: center;
+  border-radius: 3px;
+  width: 100px;
+  text-align: center;
 }

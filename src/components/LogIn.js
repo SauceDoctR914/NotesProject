@@ -48,40 +48,47 @@ class LogIn extends Component {
   render() {
     console.log(this.props, "login");
     return (
-      <div className="login-div">
-        <h1 style={{ marginTop: "20vh", marginBottom: "5vh" }}>Login</h1>
-        <form onSubmit={e => this.handleSubmit(e, this.state)}>
-          <label htmlFor="email"> E-mail: </label>
+      <div className="login-parent">
+        <div className="login-container" />
+        <div className="background-login" />
+        <div className="login-div">
+          <h1 className="login-title">Login</h1>
+          <form
+            onSubmit={e => this.handleSubmit(e, this.state)}
+            className="login-form"
+          >
+            <label htmlFor="email"> E-mail: </label>
+            <br />
+            <input
+              onChange={this.handleChange}
+              name="email"
+              id="email"
+              type="text"
+              value={this.state.auth.email}
+            />
+            <br />
+            <br />
+            <label htmlFor="password">Password:</label>
+            <br />
+            <input
+              onChange={this.handleChange}
+              name="password"
+              id="password"
+              type="text"
+              value={this.state.auth.password}
+            />
+            <br />
+            <input type="submit" name="Submit" value="Sign In" id="sign-in" />
+            <Link
+              to={{
+                pathname: `/signup`
+              }}
+            >
+              <button id="signup">Sign Up</button>
+            </Link>
+          </form>
           <br />
-          <input
-            onChange={this.handleChange}
-            name="email"
-            id="email"
-            type="text"
-            value={this.state.auth.email}
-          />
-          <br />
-          <br />
-          <label htmlFor="password">Password:</label>
-          <br />
-          <input
-            onChange={this.handleChange}
-            name="password"
-            id="password"
-            type="text"
-            value={this.state.auth.password}
-          />
-          <br />
-          <input type="submit" name="Submit" />
-        </form>
-        <br />
-        <Link
-          to={{
-            pathname: `/signup`
-          }}
-        >
-          <button className="signup">Sign Up</button>
-        </Link>
+        </div>
       </div>
     );
   }
