@@ -57,8 +57,7 @@ class NotesContainer extends Component {
       content: "",
       notebook_id: ""
     },
-    notes: [],
-    currentUser: this.props.location.state.currentUser[0]
+    notes: []
   };
 
   handleSubmit = (e, obj) => {
@@ -72,6 +71,10 @@ class NotesContainer extends Component {
     );
     window.location.reload();
   };
+  //   currentUser: this.props.users.filter(
+  //     user => user.id === this.props.notebook.relationships.users.data.id
+  //   )[0]
+  // };
 
   postNote = (title, created, description, content) => {
     const URL = "http://localhost:3002/api/v1/notes";
@@ -95,15 +98,13 @@ class NotesContainer extends Component {
   };
 
   render() {
-    console.log(this.props, "AAA");
-
     return (
       <React.Fragment key={this.props.match.params.id}>
         <div className="note-container">
           <button className="logOut" onClick={() => this.props.logOut()}>
             Log Out
           </button>
-          <Link to={`/${this.state.currentUser.attributes.email}/homepage/`}>
+          <Link to={`/homepage/`}>
             <button className="back">Back</button>
           </Link>
 

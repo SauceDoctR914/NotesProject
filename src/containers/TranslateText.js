@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchNotes } from "../redux/actions/actions";
 import Select from "react-select";
-class NoteBookContainer extends Component {
+class TranslateText extends Component {
   componentDidMount() {
     this.props.fetchNotes();
   }
@@ -552,4 +552,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(NoteBookContainer));
+)(withRouter(TranslateText));

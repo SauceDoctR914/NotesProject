@@ -14,6 +14,33 @@ class UserPage extends Component {
   // }
   //   if (this.props.currentUser.length > 0){
   //  this.setState({userNotebooks:  });
+  state = {
+    notebook: {
+      title: ""
+    }
+  };
+
+  handleSubmit = (e, obj) => {
+    e.preventDefault();
+    this.postNoteBook(obj.notebook.title, this.props.currentUser.id);
+  };
+  postNoteBook = (title, id) => {
+    const URL = "http://localhost:3002/api/v1/notebooks";
+    fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem("jwt")
+      },
+      body: JSON.stringify({
+        notebook: {
+          title: title,
+          user_id: id
+        }
+      })
+    }).then(res => res.json());
+  };
 
   myNoteBooks = () => {
     if (this.props.notebooks.length > 0 && this.props.currentUser.length > 0) {
@@ -29,6 +56,7 @@ class UserPage extends Component {
               key={notebook.id}
               notebook={notebook}
               currentUser={this.props.currentUser}
+              handleSubmit={this.handleSubmit}
             />
           );
         });
@@ -42,7 +70,6 @@ class UserPage extends Component {
   // you click to edit a note, then click to post a note.
 
   render() {
-    console.log(this.props, "userguy");
     return (
       <div className="userPage-div">
         <button className="logOut" onClick={() => this.props.logOut()}>
