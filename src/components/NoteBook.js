@@ -39,8 +39,6 @@ class NoteBook extends Component {
           >
             <div className="title-bar">
               {this.props.notebook.attributes.title}
-              {this.props.notebook.relationships.user.data.id}
-              yo
             </div>
           </Link>
         </div>

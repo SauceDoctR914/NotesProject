@@ -36,7 +36,8 @@ class EditNote extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="edit-div">
+        <h1 className="editNoteTitle">Edit Note</h1>
         <form
           onSubmit={e => this.handleSubmit(e, this.state)}
           className="edit-note"
@@ -47,12 +48,11 @@ class EditNote extends React.Component {
             placeholder={""}
             onChange={this.handleNoteChange}
             name="title"
-            id="edit-title"
+            className="edit-title"
             type="text"
             value={this.state.note.title || ""}
           />
           <br />
-          <label htmlFor="created"> Date Created: </label>
 
           <br />
           <label htmlFor="description"> Description: </label>
@@ -61,7 +61,7 @@ class EditNote extends React.Component {
             placeholder={""}
             onChange={this.handleNoteChange}
             name="description"
-            id="edit-description"
+            className="edit-description"
             type="text"
             value={this.state.note.description || ""}
           />
@@ -71,12 +71,17 @@ class EditNote extends React.Component {
           <textarea
             onChange={this.handleNoteChange}
             name="content"
-            id="edit-content"
+            className="edit-content"
             type="text"
             value={this.state.note.content || ""}
           />
           <br />
-          <input id="edit-submit" type="submit" name="Submit" />
+          <input
+            className="submitEditNote"
+            type="submit"
+            name="Submit"
+            value="Edit Note"
+          />
         </form>
       </div>
     );

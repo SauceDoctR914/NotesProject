@@ -54,33 +54,45 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div className="signup-div">
-        <h1 style={{ marginTop: "20vh", marginBottom: "5vh" }}>Sign-Up</h1>
-        <form onSubmit={e => this.handleSubmit(e, this.state)}>
-          <label htmlFor="email"> E-mail: </label>
+      <div className="login-parent">
+        <div className="login-container" />
+        <div className="background-login" />
+        <div className="login-div">
+          <h1 className="login-title">Sign Up</h1>
+          <form
+            onSubmit={e => this.handleSubmit(e, this.state)}
+            className="signup-form"
+          >
+            <br />
+            <input
+              placeholder="E-mail"
+              onChange={this.handleChange}
+              name="email"
+              className="email"
+              type="password"
+              value={this.state.user.email}
+            />
+            <br />
+            <br />
+            <br />
+            <input
+              placeholder="Password"
+              onChange={this.handleChange}
+              name="password"
+              className="password"
+              type="text"
+              value={this.state.user.password}
+            />
+            <br />
+            <input
+              type="submit"
+              name="Submit"
+              value="Register"
+              className="signup-button"
+            />
+          </form>
           <br />
-          <input
-            onChange={this.handleChange}
-            name="email"
-            id="email"
-            type="text"
-            value={this.state.user.email}
-          />
-          <br />
-          <br />
-          <label htmlFor="password">Password:</label>
-          <br />
-          <input
-            onChange={this.handleChange}
-            name="password"
-            id="password"
-            type="text"
-            value={this.state.user.password}
-          />
-          <br />
-          <input type="submit" name="Submit" />
-        </form>
-        <br />
+        </div>
       </div>
     );
   }

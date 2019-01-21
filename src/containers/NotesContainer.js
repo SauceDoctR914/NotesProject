@@ -101,32 +101,26 @@ class NotesContainer extends Component {
     return (
       <React.Fragment key={this.props.match.params.id}>
         <div className="note-container">
-          <button className="logOut" onClick={() => this.props.logOut()}>
-            Log Out
-          </button>
-          <Link to={`/homepage/`}>
-            <button className="back">Back</button>
-          </Link>
-
+          <div className="logout-div">
+            <button className="logOut" onClick={() => this.props.logOut()}>
+              Log Out
+            </button>
+          </div>
           {this.props.notebook ? (
             <h2 id="notebook-title">{this.props.notebook.attributes.title}</h2>
           ) : null}
           <div className="note-layout">
-            <div className="notes">
-              {this.mapNotes()}
-              <div className="editDiv" />
+            <div className="notes">{this.mapNotes()}</div>
+            <div className="NewNote">
+              <NewNote
+                key={this.props.match.params.id}
+                handleSubmit={this.handleSubmit}
+                title={this.state.note.title}
+                created={this.state.note.created}
+                description={this.state.note.description}
+                content={this.state.note.content}
+              />
             </div>
-          </div>
-
-          <div className="NewNote">
-            <NewNote
-              key={this.props.match.params.id}
-              handleSubmit={this.handleSubmit}
-              title={this.state.note.title}
-              created={this.state.note.created}
-              description={this.state.note.description}
-              content={this.state.note.content}
-            />
           </div>
         </div>
       </React.Fragment>
@@ -164,3 +158,6 @@ export default withRouter(
 );
 
 // <NoteBookContainer notebook={this.props.location.state} />
+// <Link to={`/homepage/`}>
+//   <button className="back">Back</button>
+// </Link>

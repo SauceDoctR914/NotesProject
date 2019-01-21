@@ -23,8 +23,8 @@ class UserPage extends Component {
   handleNoteBookSubmit = (e, obj) => {
     e.preventDefault();
     e.persist();
-
     this.postNoteBook(obj.notebook.title, this.props.currentUser.id);
+    window.location.reload();
   };
   postNoteBook = (title, id) => {
     console.log("THIS");
@@ -75,9 +75,12 @@ class UserPage extends Component {
   render() {
     return (
       <div className="userPage-div">
-        <button className="logOut" onClick={() => this.props.logOut()}>
-          Log Out{" "}
-        </button>
+        <div className="logout-div">
+          <button className="logOut" onClick={() => this.props.logOut()}>
+            Log Out{" "}
+          </button>
+        </div>
+        <h1 className="your-notebooks">Your Notebooks</h1>
         <div className="notebooks-list">{this.myNoteBooks()}</div>
         <div className="newNoteBook">
           <NewNoteBook

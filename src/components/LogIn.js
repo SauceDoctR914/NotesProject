@@ -57,24 +57,26 @@ class LogIn extends Component {
             onSubmit={e => this.handleSubmit(e, this.state)}
             className="login-form"
           >
-            <label htmlFor="email"> E-mail: </label>
+            <label htmlFor="email" />
             <br />
             <input
+              placeholder="E-mail"
               onChange={this.handleChange}
               name="email"
-              id="email"
+              className="email"
               type="text"
               value={this.state.auth.email}
             />
             <br />
             <br />
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password" />
             <br />
             <input
+              placeholder="Password"
               onChange={this.handleChange}
               name="password"
-              id="password"
-              type="text"
+              className="password"
+              type="password"
               value={this.state.auth.password}
             />
             <br />
@@ -84,7 +86,7 @@ class LogIn extends Component {
                 pathname: `/signup`
               }}
             >
-              <button id="signup">Sign Up</button>
+              <button className="signup-button">Sign Up</button>
             </Link>
           </form>
           <br />

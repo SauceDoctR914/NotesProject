@@ -24,18 +24,24 @@ class NewNoteBook extends Component {
     return (
       <div className="newnb-div">
         <form onSubmit={e => this.props.handleNoteBookSubmit(e, this.state)}>
-          <label htmlFor="title"> NoteBook Title: </label>
+          <h3 className="createNB">Create A Note Book</h3>
           <br />
           <input
+            placeholder="NoteBook Title"
             onChange={this.handleNoteBookChange}
             name="title"
-            id="title"
+            id="newnb-title"
             type="text"
             value={this.state.title}
           />
           <br />
 
-          <input type="submit" name="Submit" />
+          <input
+            type="submit"
+            value="Add Notebook"
+            name="Submit"
+            className="submitNotebook"
+          />
         </form>
       </div>
     );

@@ -23,49 +23,58 @@ class NewNote extends Component {
           className="newNoteForm"
           onSubmit={e => this.props.handleSubmit(e, this.state)}
         >
-          <label htmlFor="title"> Note Title: </label>
+          <label htmlFor="title"> </label>
           <br />
           <input
+            placeholder="Note Title"
             onChange={this.handleNoteChange}
             name="title"
-            id="title"
+            className="title"
             type="text"
             value={this.state.title}
           />
           <br />
-          <label htmlFor="created"> Date Created: </label>
+          <label htmlFor="created" />
           <select
             name="created"
             value={this.state.note.created}
             onChange={this.handleNoteChange}
+            className="created"
           >
-            <option>Select Date</option>
+            <option value="">Select Date</option>
             <option value={this.state.note.created}>
               {Moment().format("MMMM Do, YYYY")}
             </option>
           </select>
           <br />
-          <label htmlFor="description"> Description: </label>
+          <label htmlFor="description"> </label>
           <br />
           <input
+            placeholder="Description"
             onChange={this.handleNoteChange}
             name="description"
-            id="description"
+            className="description"
             type="text"
             value={this.state.note.description}
           />
           <br />
-          <label htmlFor="content">Content:</label>
+          <label htmlFor="content" />
           <br />
           <textarea
+            placeholder="Content"
             onChange={this.handleNoteChange}
             name="content"
-            id="content"
+            className="content"
             type="text"
             value={this.state.note.content}
           />
           <br />
-          <input type="submit" name="Submit" />
+          <input
+            type="submit"
+            name="Submit"
+            className="submitNote"
+            value="Add Note"
+          />
         </form>
       </div>
     );

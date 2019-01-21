@@ -506,13 +506,21 @@ class TranslateText extends Component {
       console.log(this.state.selectedOption.value, "texted");
     }
     return (
-      <div>
-        <div>
+      <div className="translateDiv">
+        <div className="logout-div">
+          <Link
+            to={{
+              pathname: `/homepage/notebook/${this.props.match.params.id}`
+            }}
+          >
+            <button className="back">Back</button>
+          </Link>
           <button className="logOut" onClick={() => this.props.logOut()}>
             Log Out{" "}
           </button>
-          <div id="translation" />
         </div>
+        <div id="translation" />
+
         <form onSubmit={e => this.translateNote(e)}>
           <Select
             className="select-translate"
@@ -521,16 +529,15 @@ class TranslateText extends Component {
             options={this.languages}
             placeholder={"Please select a language"}
           />
-          <input type="submit" name="Submit" />
+          <input
+            type="submit"
+            name="Translate"
+            className="submit-translation"
+          />
         </form>
         <div className="translated">
-          {this.state.translated.length > 0 ? this.state.translated : "Loading"}
+          {this.state.translated.length > 0 ? this.state.translated : ""}
         </div>
-        <Link
-          to={{ pathname: `/homepage/notebook/${this.props.match.params.id}` }}
-        >
-          <button className="back">Back</button>
-        </Link>
       </div>
     );
   }
