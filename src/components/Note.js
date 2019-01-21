@@ -6,7 +6,6 @@ import { deleteNote } from "../redux/actions/actions";
 import EditNote from "./EditNote";
 class Note extends Component {
   render() {
-    console.log(this.props.note.attributes.created, "AY");
     return (
       <React.Fragment>
         <div className="individual-note">

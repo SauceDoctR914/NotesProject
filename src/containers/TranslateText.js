@@ -508,13 +508,6 @@ class TranslateText extends Component {
     return (
       <div className="translateDiv">
         <div className="logout-div">
-          <Link
-            to={{
-              pathname: `/homepage/notebook/${this.props.match.params.id}`
-            }}
-          >
-            <button className="back">Back</button>
-          </Link>
           <button className="logOut" onClick={() => this.props.logOut()}>
             Log Out{" "}
           </button>
@@ -560,3 +553,11 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(withRouter(TranslateText));
+//
+// <Link
+//   to={{
+//     pathname: `/homepage/notebook/${this.props.match.params.id}`
+//   }}
+// >
+//   <button className="back">Back</button>
+// </Link>

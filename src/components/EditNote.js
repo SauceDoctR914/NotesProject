@@ -32,6 +32,7 @@ class EditNote extends React.Component {
     e.preventDefault();
     this.props.editNote(this.state.note, this.state.note.id);
     this.props.history.push(`/homepage/notebook/1`);
+    window.location.reload();
   };
 
   render() {
@@ -76,12 +77,7 @@ class EditNote extends React.Component {
             value={this.state.note.content || ""}
           />
           <br />
-          <input
-            className="submitEditNote"
-            type="submit"
-            name="Submit"
-            value="Edit Note"
-          />
+          <input className="submitEditNote" type="submit" name="Submit" />
         </form>
       </div>
     );

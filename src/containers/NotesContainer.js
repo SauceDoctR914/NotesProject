@@ -69,6 +69,8 @@ class NotesContainer extends Component {
       obj.note.description,
       obj.note.content
     );
+    // const newState = this.state.note
+    // this.setState({notes: ...state});
     window.location.reload();
   };
   //   currentUser: this.props.users.filter(
@@ -77,6 +79,7 @@ class NotesContainer extends Component {
   // };
 
   postNote = (title, created, description, content) => {
+    console.log("10000000");
     const URL = "http://localhost:3002/api/v1/notes";
     fetch(URL, {
       method: "POST",

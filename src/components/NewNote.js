@@ -37,12 +37,12 @@ class NewNote extends Component {
           <label htmlFor="created" />
           <select
             name="created"
-            value={this.state.note.created}
+            value={this.state.created}
             onChange={this.handleNoteChange}
             className="created"
           >
-            <option value="">Select Date</option>
-            <option value={this.state.note.created}>
+            <option value={this.state.created}>Select Date</option>
+            <option value={this.state.created}>
               {Moment().format("MMMM Do, YYYY")}
             </option>
           </select>

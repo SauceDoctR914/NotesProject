@@ -69,7 +69,7 @@ class SignUp extends Component {
               onChange={this.handleChange}
               name="email"
               className="email"
-              type="password"
+              type="text"
               value={this.state.user.email}
             />
             <br />
@@ -80,7 +80,7 @@ class SignUp extends Component {
               onChange={this.handleChange}
               name="password"
               className="password"
-              type="text"
+              type="password"
               value={this.state.user.password}
             />
             <br />
