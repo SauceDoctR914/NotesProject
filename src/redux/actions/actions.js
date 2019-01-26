@@ -94,3 +94,24 @@ export const deleteNote = (note, id) => {
     }).then(note => dispatch({ type: "DELETE_NOTE", note }));
   };
 };
+
+export const editNotebook = (notebook, id) => {
+  return dispatch => {
+    return fetch(`http://localhost:3002/api/v1/notebook/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem("jwt")
+      },
+      body: JSON.stringify({
+        notebook: {
+          title: notebook.title
+        }
+      })
+    })
+      .then(res => res.json())
+      .then(notebook => dispatch({ type: "EDIT_NOTEBOOK", notebok }))
+      .catch(console.error);
+  };
+};

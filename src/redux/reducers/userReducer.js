@@ -19,6 +19,9 @@ const userReducer = (state = initialState, action) => {
     case "GET_NOTEBOOKS": {
       return { ...state, notebooks: action.notebooks.data };
     }
+    case "EDIT_NOTE": {
+      return { ...state, note: action.note.data };
+    }
     case "GET_NOTES": {
       return { ...state, notes: action.notes.data };
     }

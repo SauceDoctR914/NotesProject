@@ -17,9 +17,6 @@ class NotesContainer extends Component {
     this.props.fetchNoteBooks();
     this.props.getUsers();
   }
-  // componentDidUpdate() {
-  //   this.forceUpdate();
-  // }
 
   handleDelete = (e, note, id) => {
     e.preventDefault();
@@ -69,8 +66,6 @@ class NotesContainer extends Component {
       obj.note.description,
       obj.note.content
     );
-    // const newState = this.state.note
-    // this.setState({notes: ...state});
     window.location.reload();
   };
   //   currentUser: this.props.users.filter(
@@ -159,8 +154,3 @@ export default withRouter(
     mapDispatchToProps
   )(NotesContainer)
 );
-
-// <NoteBookContainer notebook={this.props.location.state} />
-// <Link to={`/homepage/`}>
-//   <button className="back">Back</button>
-// </Link>
