@@ -7,7 +7,7 @@ class EditNoteBook extends Component {
   }
   state = {
     notebook: {
-      title: ""
+      title: this.props.notebook.title
     }
   };
 
@@ -15,10 +15,6 @@ class EditNoteBook extends Component {
     const newNote = { ...this.state.note, [e.target.name]: e.target.value };
     this.setState({ note: newNote });
   };
-
-  // handleDateChange = event => {
-  //   this.setState({ created: event.target.value });
-  // };
 
   handleSubmit = (e, obj) => {
     e.preventDefault();
@@ -43,7 +39,6 @@ class EditNoteBook extends Component {
   };
 
   render() {
-    console.log("BAH", this.props);
     return (
       <div>
         <form
@@ -68,5 +63,24 @@ class EditNoteBook extends Component {
     );
   }
 }
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps, "map", state);
+  return {
+    notebook: state.notebook.filter(
+      notebook => notebook.id === ownProps.match.params.id
+    )[0]
+  };
+};
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    editNoteBook: noteBook =>
+      dispatch(editNoteBook(note, ownProps.match.params.id))
+  };
+};
 
-export default withRouter(EditNoteBook);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(EditNoteBook);
