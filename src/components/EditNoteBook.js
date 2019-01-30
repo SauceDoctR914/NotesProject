@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Moment from "moment";
+import { editNoteBook } from "../redux/actions/actions";
+import { connect } from "react-redux";
 class EditNoteBook extends Component {
   componentDidMount() {
     const { notebook } = this.props.location.state;
   }
   state = {
     notebook: {
+      id: this.props.notebook.id,
       title: this.props.notebook.title
     }
   };
@@ -18,24 +21,9 @@ class EditNoteBook extends Component {
 
   handleSubmit = (e, obj) => {
     e.preventDefault();
-    this.postNoteBook(this.state.notebook.title);
-  };
-
-  postNoteBook = title => {
-    const URL = "http://localhost:3002/api/v1/notes";
-    fetch(URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: localStorage.getItem("jwt")
-      },
-      body: JSON.stringify({
-        notebook: {
-          title: title
-        }
-      })
-    }).then(res => res.json());
+    this.props.editNoteBook(this.state.notebook.title, this.state.notebook.id);
+    this.props.history.push(`/homepage/`);
+    window.location.reload();
   };
 
   render() {
@@ -73,8 +61,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    editNoteBook: noteBook =>
-      dispatch(editNoteBook(note, ownProps.match.params.id))
+    editNoteBook: notebook =>
+      dispatch(editNoteBook(notebook, ownProps.match.params.id))
   };
 };
 

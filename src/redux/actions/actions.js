@@ -95,7 +95,7 @@ export const deleteNote = (note, id) => {
   };
 };
 
-export const editNotebook = (notebook, id) => {
+export const editNoteBook = (notebook, id) => {
   return dispatch => {
     return fetch(`http://localhost:3002/api/v1/notebook/${id}`, {
       method: "PUT",
@@ -111,7 +111,7 @@ export const editNotebook = (notebook, id) => {
       })
     })
       .then(res => res.json())
-      .then(notebook => dispatch({ type: "EDIT_NOTEBOOK", notebok }))
+      .then(notebook => dispatch({ type: "EDIT_NOTEBOOK", notebook }))
       .catch(console.error);
   };
 };

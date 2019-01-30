@@ -40,6 +40,15 @@ class NoteBook extends Component {
             <div className="title-bar">
               {this.props.notebook.attributes.title}
             </div>
+            <div className="editNoteBook">
+              <Link
+                to={{
+                  pathname: `/homepage/editnotebook/${this.props.notebook.id}`
+                }}
+              >
+                <button> Edit Notebook</button>
+              </Link>
+            </div>
           </Link>
         </div>
       </React.Fragment>
