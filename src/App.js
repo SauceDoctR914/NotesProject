@@ -90,6 +90,17 @@ class App extends Component {
           />
           <Route
             exact
+            path="/homepage/notebook/:id/editnotebook"
+            render={routerProps => (
+              <EditNoteBook
+                {...routerProps}
+                logOut={this.logOut}
+                location={window.location}
+              />
+            )}
+          />
+          <Route
+            exact
             path="/:email/homepage/notes/:id"
             render={routerProps => (
               <Note {...routerProps} logOut={this.logOut} />
@@ -99,13 +110,6 @@ class App extends Component {
             path="/homepage/notes/:id/editnote"
             render={routerProps => (
               <EditNote {...routerProps} logOut={this.logOut} />
-            )}
-          />
-          <Route
-            exact
-            path="/homepage/notebook/:id/editnotebook"
-            render={routerProps => (
-              <EditNoteBook {...routerProps} logOut={this.logOut} />
             )}
           />
           <Route

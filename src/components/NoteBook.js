@@ -28,6 +28,7 @@ class NoteBook extends Component {
     }
   };
   render() {
+    console.log("gbaby", this.props.notebook.id);
     return (
       <React.Fragment>
         <div className="notebook-bar">
@@ -40,15 +41,15 @@ class NoteBook extends Component {
             <div className="title-bar">
               {this.props.notebook.attributes.title}
             </div>
-            <div className="editNoteBook">
-              <Link
-                to={{
-                  pathname: `/homepage/editnotebook/${this.props.notebook.id}`
-                }}
-              >
-                <button> Edit Notebook</button>
-              </Link>
-            </div>
+          </Link>
+          <Link
+            to={{
+              pathname: `/homepage/notebook/${
+                this.props.notebook.id
+              }/editnotebook`
+            }}
+          >
+            <button> Edit Notebook</button>
           </Link>
         </div>
       </React.Fragment>

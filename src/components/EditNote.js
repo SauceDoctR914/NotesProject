@@ -7,9 +7,7 @@ class EditNote extends React.Component {
   componentDidMount() {
     const { id } = this.props.match.params.id;
   }
-  // notebookID = this.props.note.relationships.data.notebook.id;
 
-  //
   state = {
     note: {
       id: this.props.note.id,
