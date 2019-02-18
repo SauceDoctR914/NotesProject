@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { fetchNotes } from "../redux/actions/actions";
 import NotesContainer from "../containers/NotesContainer";
 import NewNoteBook from "../components/NewNoteBook";
+import EditNoteBook from "../components/EditNoteBook";
 class NoteBook extends Component {
   componentDidMount() {
     this.props.fetchNotes();
@@ -28,7 +29,6 @@ class NoteBook extends Component {
     }
   };
   render() {
-    console.log("gbaby", this.props.notebook.id);
     return (
       <React.Fragment>
         <div className="notebook-bar">

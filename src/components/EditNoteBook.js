@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 class EditNoteBook extends Component {
   componentDidMount() {
-    const { notebook } = this.props.location.state;
+    this.editNoteBook();
   }
   state = {
     notebook: {
@@ -30,6 +30,7 @@ class EditNoteBook extends Component {
   render() {
     return (
       <div>
+        hi
         <form
           className="edit-nb-form"
           onSubmit={e => this.handleSubmit(e, this.state)}
@@ -53,9 +54,9 @@ class EditNoteBook extends Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps, "map", state);
+  console.log(state, "celestino");
   return {
-    notebook: state.notebook.filter(
+    notebook: state.notebooks.filter(
       notebook => notebook.id === ownProps.match.params.id
     )[0]
   };
@@ -71,5 +72,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )
-)(EditNoteBook);
+  )(EditNoteBook)
+);
