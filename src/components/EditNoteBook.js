@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import Moment from "moment";
 import { editNoteBook } from "../redux/actions/actions";
 import { connect } from "react-redux";
+
 class EditNoteBook extends Component {
   componentDidMount() {
     const { notebook } = this.props.location.state;
