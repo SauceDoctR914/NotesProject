@@ -1,44 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Notiz
+
+Notiz is a note taking app and note organization app. Users signup and then login to bring them to their notebooks page, where they can create a new notebook and then create notes within that notebook for organization. 
+
+<img width="1110" alt="screen shot 2019-02-18 at 11 43 56 am" src="https://user-images.githubusercontent.com/32119313/52965824-ba380580-3373-11e9-90de-c102a42ec42c.png">
+
+
 
 ## Available Scripts
 
-In the project directory, you can run:
+Backend built with Ruby on Rails API using Postgres. Endpoints for users, user tokens, notebooks, and notes.
 
-### `npm start`
+Frontend built with React.Js and Redux for state management. User Interface designed with custom CSS styling.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Ruby Knock Gem on the backend and bcrypt on the frontend for JWT Authentication. Google Cloud Translation Api for translating notes into foreign languages. Notebooks and notes stored on the backend, with the date created for notes formatted using Moment.js. Multi-page and dynamic links created using React Router and WithRouter.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Backend
+Run the rails API from https://github.com/SauceDoctR914/mod6project-Backend-api/ on port 3002 with
 
-### `npm test`
+bundle install
+rails db:create
+rails db:migrate
+rails s -p 3002
+Frontend
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# To install frontend dependencies run
 
-### `npm run build`
+npm install
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# To open in browser run
+npm start
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Usage Example
+<img width="1118" alt="screen shot 2019-02-18 at 11 44 13 am" src="https://user-images.githubusercontent.com/32119313/52966383-2404df00-3375-11e9-8e1a-5a595a8a962a.png">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+After creating a notebook a user can click the notebook link to display that particular notebook's page. Once there, they can create a new note which is initialized with a title, the date created from a drop down, a brief description of the note, and the note content. After a note is created, the user may edit that note, delete the note or even translate that note into over 100 different languages!
 
-### `npm run eject`
+<img width="1133" alt="screen shot 2019-02-18 at 12 04 00 pm" src="https://user-images.githubusercontent.com/32119313/52966441-50b8f680-3375-11e9-95d4-ce50fc93f020.png">
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Here the note is translated into greek. At any time, the User may hit logout at the top left of the page and it will remove their JWT token, log them out, and return them to the login page where they may log back in or signup as different user.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contact
+Gavin Sokolof - sokolofg@gmail.com
