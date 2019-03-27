@@ -1,8 +1,5 @@
 const initialState = {
-  currentUser: {
-    user: {},
-    jwt: ""
-  },
+  currentUser: {},
   users: [],
   notebooks: [],
   notes: []
@@ -10,8 +7,8 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "GET_USER": {
-      return { ...state, currentUser: action.getUser };
+    case "SET_USER": {
+      return { ...state, currentUser: action.payload };
     }
     case "GET_USERS": {
       return { ...state, users: action.users.data };
@@ -34,7 +31,9 @@ const userReducer = (state = initialState, action) => {
         notes: state.notes.filter(note => note !== action.payload)
       };
     }
-
+    case "LOGOUT_USER": {
+      return { ...state };
+    }
     default:
       return state;
   }

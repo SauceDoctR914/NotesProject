@@ -1,5 +1,5 @@
-export const getUser = currentUser => ({
-  type: "GET_USER",
+export const setUser = currentUser => ({
+  type: "SET_USER",
   payload: currentUser
 });
 
