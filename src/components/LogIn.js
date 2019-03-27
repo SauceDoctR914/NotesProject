@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
+import { connect } from "react-redux";
 class LogIn extends Component {
   state = {
     errors: false,
@@ -40,6 +41,7 @@ class LogIn extends Component {
           console.log(user);
           localStorage.setItem("jwt", user.jwt);
           if (user.jwt) {
+            this.props.setUser(user);
             this.props.history.push(`/${this.state.auth.email}/homepage`);
           }
         }
@@ -96,6 +98,12 @@ class LogIn extends Component {
   }
 }
 
-export default withRouter(LogIn);
+const mapDispatchToProps = dispatch => {
+  return {
+    setUser: dispatch(setUser())
+  };
+};
+
+export default withRouter(connect(mapDispatchToProps)(LogIn));
 
 // <button onClick={this.props.logout()}>LogOut </button>
