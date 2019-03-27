@@ -38,14 +38,14 @@ class LogIn extends Component {
         if (user.error) {
           this.setState({ errors: true });
         } else {
-          console.log(user);
           localStorage.setItem("jwt", user.jwt);
           if (user.jwt) {
             this.props.setUser(user);
             this.props.history.push(`/${this.state.auth.email}/homepage`);
           }
         }
-      });
+      })
+      .catch(console.error);
   };
   render() {
     console.log(this.props, "login");

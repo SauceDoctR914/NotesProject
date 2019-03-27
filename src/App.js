@@ -44,7 +44,7 @@ class App extends Component {
           if (!user.error) {
             return this.props.currentUser;
           } else {
-            this.logout();
+            this.this.logout();
           }
         });
     }
@@ -52,6 +52,7 @@ class App extends Component {
 
   logOut = () => {
     localStorage.removeItem("jwt");
+    this.props.logOutUser();
     this.props.history.push("/login");
   };
 
@@ -142,7 +143,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getUsers: () => dispatch(getUsers()),
     fetchNotes: () => dispatch(fetchNotes()),
-    fetchNoteBooks: () => dispatch(fetchNoteBooks())
+    fetchNoteBooks: () => dispatch(fetchNoteBooks()),
+    logOutUser: () => dispatch(logOutUser())
   };
 };
 

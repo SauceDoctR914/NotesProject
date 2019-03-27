@@ -2,7 +2,10 @@ export const setUser = currentUser => ({
   type: "SET_USER",
   payload: currentUser
 });
-
+export const logOutUser = currentUser => ({
+  type: "LOGOUT_USER",
+  payload: currentUser
+});
 export const fetchNoteBooks = () => {
   return dispatch => {
     return fetch("http://localhost:3002/api/v1/notebooks", {
