@@ -53,7 +53,7 @@ class App extends Component {
   logOut = () => {
     localStorage.removeItem("jwt");
     this.props.logOutUser();
-    this.props.history.push("/login");
+    this.props.history.push("/");
   };
 
   render() {
@@ -67,7 +67,7 @@ class App extends Component {
           />
           <Route
             exact
-            path="/login"
+            path="/"
             render={routerProps => (
               <LogIn {...routerProps} logOut={this.logOut} />
             )}
