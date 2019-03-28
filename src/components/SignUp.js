@@ -52,7 +52,7 @@ class SignUp extends Component {
     localStorage.removeItem("jwt");
   };
 
-  accountReady = () => this.props.history.push("/");
+  accountReady = () => <Redirect to="/" />;
 
   render() {
     return (
