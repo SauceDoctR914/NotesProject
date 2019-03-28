@@ -86,9 +86,6 @@ class SignUp extends Component {
               value={this.state.user.password}
             />
             <br />
-            <button onClick={this.accountReady} id="sign-in">
-              Have an Account?
-            </button>
             <input
               type="submit"
               name="Submit"
@@ -96,6 +93,9 @@ class SignUp extends Component {
               className="signup-button"
             />
           </form>
+          <span onClick={this.accountReady} id="sign-in">
+            Have an Account?
+          </span>
           <br />
         </div>
       </div>

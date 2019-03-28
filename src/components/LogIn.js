@@ -49,7 +49,7 @@ class LogIn extends Component {
       .catch(console.error);
   };
   render() {
-    console.log(this.props, "login");
+    console.log(this.props, "gavvvo");
     return (
       <div className="login-parent">
         <div className="login-container" />
@@ -101,7 +101,7 @@ class LogIn extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setUser: () => dispatch(setUser())
+    setUser: () => setUser()
   };
 };
 

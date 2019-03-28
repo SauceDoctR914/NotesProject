@@ -118,3 +118,31 @@ export const editNoteBook = (notebook, id) => {
       .catch(console.error);
   };
 };
+
+export const login = obj => {
+  return dispatch => {
+    return fetch("http://localhost:3002/api/user_token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        auth: {
+          email: obj.auth.email,
+          password: obj.auth.password
+        }
+      })
+    })
+      .then(res => res.json())
+      .then(user => {
+        localStorage.setItem("jwt", user.jwt);
+        dispatch(setUser(user));
+        if (user.jwt) {
+          this.props.setUser(user);
+          this.props.history.push(`/${this.state.auth.email}/homepage`);
+        }
+      })
+      .catch(console.error);
+  };
+};

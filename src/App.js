@@ -10,7 +10,8 @@ import {
   getUsers,
   fetchNotes,
   fetchNotebooks,
-  logOutUser
+  logOutUser,
+  setUser
 } from "./redux/actions/actions";
 
 import NoteBook from "./components/NoteBook";
@@ -32,6 +33,7 @@ class App extends Component {
     this.props.getUsers();
     this.props.fetchNotes();
     this.props.fetchNoteBooks();
+    this.props.setUser();
     const URL = "http://localhost:3002/api/v1/users";
     if (localStorage.getItem("jwt")) {
       fetch(URL, {
@@ -58,6 +60,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.props, "gavin");
     return (
       <div className="App">
         <Switch location={this.props.location}>
@@ -145,7 +148,8 @@ const mapDispatchToProps = dispatch => {
     getUsers: () => dispatch(getUsers()),
     fetchNotes: () => dispatch(fetchNotes()),
     fetchNoteBooks: () => dispatch(fetchNoteBooks()),
-    logOutUser: () => dispatch(logOutUser())
+    logOutUser: () => dispatch(logOutUser()),
+    setUser: () => dispatch(setUser())
   };
 };
 
