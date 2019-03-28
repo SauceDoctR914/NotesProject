@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { setUser } from "../redux/actions/actions";
 class LogIn extends Component {
   state = {
     errors: false,
@@ -100,7 +101,7 @@ class LogIn extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setUser: dispatch(setUser())
+    setUser: () => dispatch(setUser())
   };
 };
 

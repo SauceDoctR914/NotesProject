@@ -9,7 +9,8 @@ import {
   fetchNoteBooks,
   getUsers,
   fetchNotes,
-  fetchNotebooks
+  fetchNotebooks,
+  logOutUser
 } from "./redux/actions/actions";
 
 import NoteBook from "./components/NoteBook";

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 class SignUp extends Component {
   state = {
     user: {
@@ -86,6 +86,9 @@ class SignUp extends Component {
               value={this.state.user.password}
             />
             <br />
+            <button onClick={this.accountReady} id="sign-in">
+              Have an Account?
+            </button>
             <input
               type="submit"
               name="Submit"
@@ -93,7 +96,6 @@ class SignUp extends Component {
               className="signup-button"
             />
           </form>
-          <button onClick={this.accountReady}>Have an Account?</button>
           <br />
         </div>
       </div>
