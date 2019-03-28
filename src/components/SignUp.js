@@ -42,7 +42,7 @@ class SignUp extends Component {
         })
       })
         .then(res => res.json())
-        .then(this.props.history.push("/login"));
+        .then(this.props.history.push("/"));
     } else {
       alert("not same password bro"); // render something less anooying than alert
     }
@@ -51,6 +51,8 @@ class SignUp extends Component {
   logout = () => {
     localStorage.removeItem("jwt");
   };
+
+  accountReady = () => this.props.history.push("/");
 
   render() {
     return (
@@ -91,6 +93,7 @@ class SignUp extends Component {
               className="signup-button"
             />
           </form>
+          <button onClick={this.accountReady}>Have an Account?</button>
           <br />
         </div>
       </div>

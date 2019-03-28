@@ -30,7 +30,6 @@ class EditNoteBook extends Component {
   render() {
     return (
       <div>
-        hi
         <form
           className="edit-nb-form"
           onSubmit={e => this.handleSubmit(e, this.state)}
@@ -46,7 +45,6 @@ class EditNoteBook extends Component {
             value={this.state.notebook.title}
           />
           <br />
-
           <input type="submit" name="Submit" />
         </form>
       </div>
