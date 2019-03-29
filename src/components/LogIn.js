@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { setUser } from "../redux/actions/actions";
+import { login } from "../redux/actions/actions";
 class LogIn extends Component {
   state = {
     errors: false,
@@ -15,41 +15,39 @@ class LogIn extends Component {
   };
   handleSubmit = (e, obj) => {
     e.preventDefault();
-    console.log("yo", e.target, obj);
-    this.login(obj);
+    console.log(obj, "GGGAZ");
+    this.props.login(obj);
   };
 
-  login = obj => {
-    fetch("http://localhost:3002/api/user_token", {
-      // mode: "no-cors",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        auth: {
-          email: obj.auth.email,
-          password: obj.auth.password
-        }
-      })
-    })
-      .then(res => res.json())
-      .then(user => {
-        if (user.error) {
-          this.setState({ errors: true });
-        } else {
-          localStorage.setItem("jwt", user.jwt);
-          if (user.jwt) {
-            this.props.setUser(user);
-            this.props.history.push(`/${this.state.auth.email}/homepage`);
-          }
-        }
-      })
-      .catch(console.error);
-  };
+  // login = obj => {
+  //   fetch("http://localhost:3002/api/user_token", {
+  //     // mode: "no-cors",
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json"
+  //     },
+  //     body: JSON.stringify({
+  //       auth: {
+  //         email: obj.auth.email,
+  //         password: obj.auth.password
+  //       }
+  //     })
+  //   })
+  //     .then(res => res.json())
+  //     .then(user => {
+  //       if (user.error) {
+  //         this.setState({ errors: true });
+  //       } else {
+  //         localStorage.setItem("jwt", user.jwt);
+  //         if (user.jwt) {
+  //           this.props.history.push(`/${this.state.auth.email}/homepage`);
+  //         }
+  //       }
+  //     })
+  //     .catch(console.error);
+  // };
   render() {
-    console.log(this.props, "gavvvo");
     return (
       <div className="login-parent">
         <div className="login-container" />
@@ -98,13 +96,25 @@ class LogIn extends Component {
     );
   }
 }
+const mapStateToProps = (state, ownProps) => {
+  if (state) {
+    return {
+      currentUser: state.currentUser
+    };
+  }
+};
 
 const mapDispatchToProps = dispatch => {
   return {
-    setUser: () => setUser()
+    login: () => dispatch(login())
   };
 };
 
-export default withRouter(connect(mapDispatchToProps)(LogIn));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(LogIn)
+);
 
 // <button onClick={this.props.logout()}>LogOut </button>

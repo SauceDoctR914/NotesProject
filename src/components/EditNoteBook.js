@@ -5,9 +5,9 @@ import { editNoteBook } from "../redux/actions/actions";
 import { connect } from "react-redux";
 
 class EditNoteBook extends Component {
-  componentDidMount() {
-    this.editNoteBook();
-  }
+  // componentDidMount() {
+  //   this.props.editNoteBook();
+  // }
   state = {
     notebook: {
       id: this.props.notebook.id,
@@ -28,6 +28,7 @@ class EditNoteBook extends Component {
   };
 
   render() {
+    console.log(this.props, "9000");
     return (
       <div>
         <form

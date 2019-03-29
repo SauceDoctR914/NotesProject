@@ -136,12 +136,11 @@ export const login = obj => {
     })
       .then(res => res.json())
       .then(user => {
+        console.log(user, "LOG IN");
         localStorage.setItem("jwt", user.jwt);
         dispatch(setUser(user));
-        if (user.jwt) {
-          this.props.setUser(user);
-          this.props.history.push(`/${this.state.auth.email}/homepage`);
-        }
+        // if (user.jwt) {
+        //   this.props.setUser(user);
       })
       .catch(console.error);
   };

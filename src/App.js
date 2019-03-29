@@ -10,8 +10,7 @@ import {
   getUsers,
   fetchNotes,
   fetchNotebooks,
-  logOutUser,
-  setUser
+  logOutUser
 } from "./redux/actions/actions";
 
 import NoteBook from "./components/NoteBook";
@@ -30,12 +29,11 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.props.getUsers();
-    this.props.fetchNotes();
-    this.props.fetchNoteBooks();
-    this.props.setUser();
+    // this.props.getUsers();
+    // this.props.fetchNotes();
+    // this.props.fetchNoteBooks();
     const URL = "http://localhost:3002/api/v1/users";
-    if (localStorage.getItem("jwt")) {
+    if (localStorage.getItem("jwt") !== undefined) {
       fetch(URL, {
         method: "GET",
         headers: {
@@ -148,8 +146,7 @@ const mapDispatchToProps = dispatch => {
     getUsers: () => dispatch(getUsers()),
     fetchNotes: () => dispatch(fetchNotes()),
     fetchNoteBooks: () => dispatch(fetchNoteBooks()),
-    logOutUser: () => dispatch(logOutUser()),
-    setUser: () => dispatch(setUser())
+    logOutUser: () => dispatch(logOutUser())
   };
 };
 
