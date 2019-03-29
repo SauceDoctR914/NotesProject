@@ -16,10 +16,6 @@ class NewNoteBook extends Component {
     this.setState({ notebook: newNoteBook });
   };
 
-  // handleSubmit = (e, obj) => {
-  //   e.preventDefault();
-  //   this.props.handleNoteBookSubmit(obj);
-  // };
   render() {
     return (
       <div className="newnb-div">

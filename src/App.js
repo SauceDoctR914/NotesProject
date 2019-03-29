@@ -55,7 +55,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.props, "gavin");
     return (
       <div className="App">
         <Switch location={this.props.location}>

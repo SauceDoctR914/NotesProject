@@ -96,6 +96,7 @@ class NotesContainer extends Component {
   };
 
   render() {
+    console.log(this.props, "guyguy");
     return (
       <React.Fragment key={this.props.match.params.id}>
         <div className="note-container">
@@ -134,7 +135,8 @@ const mapStateToProps = (state, ownProps) => {
       notebook: state.notebooks.filter(
         notebook => notebook.id === ownProps.match.params.id
       )[0],
-      users: state.users
+      users: state.users,
+      currentUser: state.currentUser
     };
   }
 };
