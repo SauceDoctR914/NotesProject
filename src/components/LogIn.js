@@ -15,8 +15,9 @@ class LogIn extends Component {
   };
   handleSubmit = (e, obj) => {
     e.preventDefault();
-    console.log(obj, "GGGAZ");
+    console.log(obj.auth, "GGGAZ");
     this.props.login(obj);
+    this.props.history.push(`/${this.state.auth.email}/homepage`);
   };
 
   // login = obj => {
@@ -106,7 +107,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: () => dispatch(login())
+    login: obj => dispatch(login(obj))
   };
 };
 

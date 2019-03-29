@@ -29,26 +29,23 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // this.props.getUsers();
-    // this.props.fetchNotes();
-    // this.props.fetchNoteBooks();
-    const URL = "http://localhost:3002/api/v1/users";
-    if (localStorage.getItem("jwt") !== undefined) {
-      fetch(URL, {
-        method: "GET",
-        headers: {
-          Authorization: localStorage.getItem("jwt")
-        }
-      })
-        .then(res => res.json())
-        .then(user => {
-          if (!user.error) {
-            return this.props.currentUser;
-          } else {
-            this.this.logout();
-          }
-        });
-    }
+    // const URL = "http://localhost:3002/api/v1/users";
+    // if (localStorage.getItem("jwt") !== undefined) {
+    //   fetch(URL, {
+    //     method: "GET",
+    //     headers: {
+    //       Authorization: localStorage.getItem("jwt")
+    //     }
+    //   })
+    //     .then(res => res.json())
+    //     .then(user => {
+    //       if (!user.error) {
+    //         return this.props.currentUser;
+    //       } else {
+    //         this.this.logout();
+    //       }
+    //     });
+    // }
   }
 
   logOut = () => {

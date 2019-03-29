@@ -119,7 +119,7 @@ export const editNoteBook = (notebook, id) => {
   };
 };
 
-export const login = obj => {
+export const login = data => {
   return dispatch => {
     return fetch("http://localhost:3002/api/user_token", {
       method: "POST",
@@ -129,8 +129,8 @@ export const login = obj => {
       },
       body: JSON.stringify({
         auth: {
-          email: obj.auth.email,
-          password: obj.auth.password
+          email: data.auth.email,
+          password: data.auth.password
         }
       })
     })
@@ -139,9 +139,6 @@ export const login = obj => {
         console.log(user, "LOG IN");
         localStorage.setItem("jwt", user.jwt);
         dispatch(setUser(user));
-        // if (user.jwt) {
-        //   this.props.setUser(user);
-      })
-      .catch(console.error);
+      });
   };
 };
