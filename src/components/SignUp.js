@@ -20,7 +20,6 @@ class SignUp extends Component {
 
   handleSubmit = (e, obj) => {
     e.preventDefault();
-    console.log("yo", e.target);
     this.signup(this.state.user.email, this.state.user.password);
   };
   componentDidMount() {}

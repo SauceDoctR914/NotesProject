@@ -6,7 +6,9 @@ export const logOutUser = currentUser => ({
   type: "LOGOUT_USER",
   payload: currentUser
 });
+
 export const fetchNoteBooks = () => {
+  let token = "Bearer " + localStorage.getItem("jwt");
   return dispatch => {
     return fetch("http://localhost:3002/api/v1/notebooks", {
       headers: {
@@ -21,6 +23,7 @@ export const fetchNoteBooks = () => {
 
 export const getUsers = () => {
   return dispatch => {
+    console.log("gAVIN GAVING VAGREAGEA", localStorage.getItem("jwt"));
     return fetch("http://localhost:3002/api/v1/users", {
       headers: {
         Authorization: localStorage.getItem("jwt")

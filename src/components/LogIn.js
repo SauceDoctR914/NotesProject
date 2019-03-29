@@ -16,43 +16,43 @@ class LogIn extends Component {
   handleSubmit = (e, obj) => {
     e.preventDefault();
     console.log(obj.auth, "GGGAZ");
-    this.props.login(obj);
+    this.login(obj);
     this.props.history.push(`/${this.state.auth.email}/homepage`);
+    setTimeout(() => window.location.reload(), 0);
   };
 
-  // login = obj => {
-  //   fetch("http://localhost:3002/api/user_token", {
-  //     // mode: "no-cors",
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       auth: {
-  //         email: obj.auth.email,
-  //         password: obj.auth.password
-  //       }
-  //     })
-  //   })
-  //     .then(res => res.json())
-  //     .then(user => {
-  //       if (user.error) {
-  //         this.setState({ errors: true });
-  //       } else {
-  //         localStorage.setItem("jwt", user.jwt);
-  //         if (user.jwt) {
-  //           this.props.history.push(`/${this.state.auth.email}/homepage`);
-  //         }
-  //       }
-  //     })
-  //     .catch(console.error);
-  // };
+  login = obj => {
+    fetch("http://localhost:3002/api/user_token", {
+      // mode: "no-cors",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        auth: {
+          email: obj.auth.email,
+          password: obj.auth.password
+        }
+      })
+    })
+      .then(res => res.json())
+      .then(user => {
+        if (user.error) {
+          this.setState({ errors: true });
+        } else {
+          localStorage.setItem("jwt", user.jwt);
+          if (user.jwt) {
+            this.props.history.push(`/${this.state.auth.email}/homepage`);
+          }
+        }
+      })
+      .catch(console.error);
+  };
   render() {
     return (
       <div className="login-parent">
         <div className="login-container" />
-        <div className="background-login" />
         <div className="login-div">
           <h1 className="login-title">Login</h1>
           <form
