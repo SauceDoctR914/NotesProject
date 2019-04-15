@@ -522,28 +522,28 @@ body {
 .login-parent {
   height: 100%;
   width: 100%;
+  overflow-y: hidden;
 }
 .login-container {
-  height: 100vh;
+  min-height: 100vh;
   min-width: 70em;
   position: absolute;
-  /*background-size: stretch;
-  background-repeat: no-repeat;
-  background-image: url("https://images.unsplash.com/photo-1533103601126-a65ecc2cfc39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"); */
+  /* background-image: url("https://images.unsplash.com/photo-1533103601126-a65ecc2cfc39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"); */
   background: url("https://images.unsplash.com/photo-1533103601126-a65ecc2cfc39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80")
-    no-repeat left center fixed;
-  -webkit-background-size: stretch;
-  /* -moz-background-size: cover;
-  -o-background-size: cover; */
+    /* no-repeat left left fixed; */;
+  -webkit-background-size: cover;
+  background-repeat: no-repeat;
+  -moz-background-size: cover;
   background-size: cover;
+  background-position: left left fixed;
 }
 .login-div {
   height: 100%;
-  min-width: 20em;
+  min-width: 25%;
   background-color: #f7f7f7;
   padding: 173px 55px 55px;
   position: relative;
-  margin-left: 58em;
+  margin-left: 62em;
   border: 1px solid black;
   background: #2575fc;
 }
