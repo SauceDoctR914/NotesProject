@@ -15,10 +15,9 @@ class LogIn extends Component {
   };
   handleSubmit = (e, obj) => {
     e.preventDefault();
-    console.log(obj.auth, "GGGAZ");
     this.login(obj);
-    this.props.history.push(`/${this.state.auth.email}/homepage`);
-    setTimeout(() => window.location.reload(), 0);
+    // this.props.history.push(`/${this.state.auth.email}/homepage`);
+    // setTimeout(() => window.location.reload(), 10);
   };
 
   login = obj => {
@@ -38,11 +37,15 @@ class LogIn extends Component {
     })
       .then(res => res.json())
       .then(user => {
+        console.log("USER", user);
         if (user.error) {
+          console.log("USER", user);
           this.setState({ errors: true });
         } else {
+          console.log("USER", user);
           localStorage.setItem("jwt", user.jwt);
           if (user.jwt) {
+            console.log("USER", user);
             this.props.history.push(`/${this.state.auth.email}/homepage`);
           }
         }

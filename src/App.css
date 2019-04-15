@@ -14,6 +14,7 @@
 .notebook-bar {
   /* position: fixed; */
   margin-bottom: 20%;
+  overflow-y: scroll;
 }
 
 /* notescontainer */
@@ -89,66 +90,77 @@
 .newnb-div {
   margin-top: 5%;
   position: absolute;
-  z-index: 15;
   top: 100%;
-  left: 38%;
-  right: 20%;
 }
 #newnb-title {
   background: #b7d4e0;
-  width: 35vh;
-  height: 5vh;
+  width: 14em;
+  font-size: 18px;
+  height: 2em;
   border: none;
+  margin-left: 30%;
 }
 #newnb-title:hover {
   box-shadow: 0 0 4px 3px #a3c2ce;
 }
 .createNB {
-  margin-right: 50vh;
+  /* width: 10em; */
+  margin-left: 0%;
   font-size: 45px;
   text-shadow: 0 5px 4px white;
   font-weight: bold;
 }
+.newnb-div {
+  margin-top: 0;
+  margin-left: 47%;
+}
+.newNbform {
+  display: inline-block;
+  align-items: center;
+  width: 40em;
+  height: 20em;
+}
+
 .submitNotebook {
-  width: 25vh;
-  margin-left: 5vh;
+  width: 17em;
   margin-top: 1%;
+  margin-left: 30%;
   font-size: 15px;
   background: black;
   font-weight: bold;
   color: white;
   border-radius: 7px;
-  height: 4vh;
+  height: 3em;
 }
 .submitNotebook:hover {
   box-shadow: 0 0 3px 3px white;
 }
 .your-notebooks {
+  width: 10em;
   font-weight: bold;
   font-size: 70px;
   color: black;
   text-shadow: 1px 2px 2px white;
   position: absolute;
   z-index: 15;
+  margin-left: 48%;
   top: 20%;
-  left: 30%;
-  right: 20%;
   margin-bottom: 30%;
 }
 .notebooks-list {
   position: absolute;
   z-index: 15;
-  top: 50%;
-  left: 40%;
-  right: 20%;
-  bottom: 20%;
-  margin: -100px 0 0 -150px;
+  top: 30%;
+  /* left: 48%; */
+  bottom: 10%;
+  margin-left: 48%;
+  /* margin: -100px 0 0 -150px; */
   background: #b6d4e1;
   box-shadow: 0 0 4px 4px white;
   border-radius: 250px;
   overflow: auto;
-  width: 60vh;
-  height: 60vh;
+  width: 34em;
+  height: 35em;
   align-items: center;
   text-align: center;
   text-decoration: none;
@@ -159,7 +171,7 @@
   right: 40%;
   color: white;
   text-decoration: none;
-  margin-top: 3vh;
+  margin-top: 1em;
   top: 20%;
   align-items: center;
   min-height: 40%; /* position: absolute; */
@@ -173,15 +185,15 @@ a {
   font-size: 16px;
 }
 .logout-div {
-  width: 300vh;
+  width: 100vw;
   border-bottom-style: solid;
-  height: 4vh;
+  height: 2.3em;
   background-color: #5f89b0;
 }
 .logOut {
   float: left;
-  height: 4vh;
-  width: 25vh;
+  height: 3em;
+  width: 14em;
   border-radius: 3px;
   font-family: Poppins-Regular, sans-serif;
   font-weight: bold;
@@ -197,8 +209,8 @@ a {
   background: #141b21;
 }
 .userPage-div {
-  min-height: 150vh;
-  min-width: 200vh;
+  min-height: 150%;
+  width: 100vw;
   margin-top: 0;
   top: 0%;
   background-size: cover;
@@ -501,7 +513,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 .App {
   width: 100%;

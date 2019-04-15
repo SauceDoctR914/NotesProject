@@ -6,6 +6,7 @@ import { fetchNoteBooks, getUsers } from "../redux/actions/actions";
 import NewNoteBook from "../components/NewNoteBook";
 class UserPage extends Component {
   componentDidMount() {
+    console.log("didmount");
     this.props.getUsers();
     this.props.fetchNoteBooks();
   }
