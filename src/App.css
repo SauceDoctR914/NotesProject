@@ -523,41 +523,41 @@ body {
   height: 100%;
   width: 100%;
   overflow-y: hidden;
+  overflow-x: auto;
   position: absolute;
 }
 .login-container {
   min-height: 100vh;
-  min-width: 50%;
+  min-width: 45%;
   position: absolute;
   /* background: #B5C8D6; */
   background: url("https://images.unsplash.com/photo-1533103601126-a65ecc2cfc39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80");
   -webkit-background-size: cover;
   background-repeat: no-repeat;
   -moz-background-size: cover;
-  background-size: cover;
   background-position: left left fixed;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 .login-div {
   height: 100%;
-  min-width: 50%;
+  padding: 0;
+  /* min-width: 55%; */
   /* width: auto; */
   background-color: #f7f7f7;
-  padding: 173px 55px 55px;
-  position: fixed;
-  margin-left: 50%;
+  /* padding: 173px 55px 55px; */
+  /* position: absolute; */
+  margin-left: 40%;
   border: 1px solid black;
   background: #2575fc;
 }
 .login-title {
   text-align: center;
-  overflow: hidden;
 }
 .loginformtitle {
-  margin-top: 20%;
-  /* margin-left: 10%; */
+  margin-top: 10%;
+  /* margin-left: 20%;
   margin-right: 20%;
-  width: 70%;
+  width: 60%; */
 }
 .login-form {
   justify-content: center;
@@ -569,7 +569,7 @@ body {
 #sign-in {
   text-align: center;
   border-radius: 3px;
-  margin-left: 0.75em;
+  margin-left: 0.5em;
 }
 .email {
   text-align: center;
@@ -593,7 +593,8 @@ body {
   font-size: 15px;
   font-weight: bold;
   margin-top: 1em;
-  margin-left: 0.5em;
+  margin-left: 0.65em;
+  margin-right: 0.5em;
   text-align: center;
   background-color: #c5b8d6;
 }
