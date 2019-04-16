@@ -50,7 +50,12 @@ class LogIn extends Component {
           }
         }
       })
-      .catch(console.error);
+      .catch(
+        e =>
+          window.alert(
+            "Sorry, something went wrong. Please try logging in again."
+          ) && console.error
+      );
   };
   render() {
     return (
@@ -70,7 +75,7 @@ class LogIn extends Component {
                 onChange={this.handleChange}
                 name="email"
                 className="email"
-                type="text"
+                type="email"
                 value={this.state.auth.email}
               />
               <br />

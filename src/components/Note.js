@@ -33,6 +33,7 @@ class Note extends Component {
             <button
               className="delete-note"
               onClick={(e, note, id) =>
+                window.confirm("Are you sure you wish to delete this item?") &&
                 this.props.deleteNote(e, this.props.note, this.props.note.id)
               }
             >

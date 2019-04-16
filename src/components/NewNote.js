@@ -17,7 +17,7 @@ class NewNote extends Component {
   };
   render() {
     return (
-      <div>
+      <div id="containerNewNote">
         <h3>Add a Note:</h3>
         <form
           className="newNoteForm"
