@@ -148,20 +148,40 @@
   z-index: 15;
   /* margin-left: 48%; */
   /* top: 200px; */
-  margin-bottom: 30%;
+  margin-bottom: 100px;
+}
+.css-vj8t7z {
+  width: 250px !important;
+}
+.css-1hwfws3 {
+  background: #5f89b0;
+  height: 50px;
+  border-width: 1px !important;
+  border-color: black !important;
+  color: black !important;
+}
+.css-1492t68 {
+  background: #5f89b0;
+  color: black !important;
+}
+.css-1wy0on6 {
+  background: #5f89b0;
+}
+.css-1ep9fjw {
+  background: #5f89b0;
+  color: black !important;
 }
 .notebooks-list {
-  /* position: absolute; */
   z-index: 15;
-  top: 300px;
   bottom: 10%;
-  /* margin-left: 48%; */
+  margin-right: 0;
+  /* margin-left: 50px; */
   background: #b6d4e1;
   box-shadow: 0 0 4px 4px white;
   border-radius: 250px;
   overflow: auto;
-  width: 34em;
-  height: 35em;
+  width: 550px;
+  height: 600px;
   align-items: center;
   text-align: center;
   text-decoration: none;
@@ -273,15 +293,13 @@ a {
   box-shadow: 0 0 3px 3px white;
 }
 /* translate */
-.select-translate {
-  width: 30%;
+.css-10nd86i {
 }
-
 .translate-button {
   border-radius: 4px;
-  height: 5vh;
-  margin-left: 1%;
-  width: 17vh;
+  height: 40px;
+  margin-left: 20px;
+  width: 140px;
   font-weight: bold;
   font-size: 13px;
   color: white;
@@ -626,9 +644,15 @@ body {
 }
 
 /* translateText */
+#translateform {
+}
+#translation {
+  margin-left: 37%;
+  margin-top: 15%;
+}
 .translateDiv {
-  min-height: 150vh;
-  min-width: 200vh;
+  min-height: 125vh;
+  min-width: 100vw;
   margin-top: 0;
   top: 0%;
   background-size: cover;
@@ -638,18 +662,19 @@ body {
   background-image: url("https://images.unsplash.com/photo-1530379768560-fac46435511d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
 }
 .translated {
-  margin-left: 80vh;
-  margin-top: 5vh;
+  /* margin-left: 80vh; */
+  margin-top: 50px;
   min-height: auto;
   box-shadow: 0 0 3px 3px white;
-  width: 40vh;
+  width: 400px;
+  margin-left: -70px;
   border-radius: 9px;
   background: #638bac;
 }
 .select-translate {
-  margin-left: 80vh;
-  margin-top: 40vh;
-  width: 40vh;
+  /* margin-left: 80vh; */
+  /* margin-top: 40vh; */
+  width: 250px;
   color: black;
   font-weight: bold;
 }
@@ -670,14 +695,15 @@ body {
   background: #141b21;
 }
 .submit-translation {
-  width: 20vh;
+  width: 200px;
   font-size: 15px;
   background: black;
   font-weight: bold;
   color: white;
   border-radius: 7px;
-  height: 4vh;
-  margin-left: 90vh;
+  height: 30px;
+  margin-left: 20px;
+  margin-top: 15px;
 }
 .submit-translation:hover {
   box-shadow: 0 0 3px 3px white;

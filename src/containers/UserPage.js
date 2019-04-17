@@ -25,7 +25,7 @@ class UserPage extends Component {
     e.preventDefault();
     e.persist();
     this.postNoteBook(obj.notebook.title, this.props.currentUser.id);
-    window.location.reload();
+    // window.location.reload();
   };
   postNoteBook = (title, id) => {
     console.log("THIS");

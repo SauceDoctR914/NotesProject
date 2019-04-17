@@ -512,24 +512,24 @@ class TranslateText extends Component {
             Log Out{" "}
           </button>
         </div>
-        <div id="translation" />
-
-        <form onSubmit={e => this.translateNote(e)}>
-          <Select
-            className="select-translate"
-            value={this.selectedOption}
-            onChange={this.handleChange}
-            options={this.languages}
-            placeholder={"Please select a language"}
-          />
-          <input
-            type="submit"
-            name="Translate"
-            className="submit-translation"
-          />
-        </form>
-        <div className="translated">
-          {this.state.translated.length > 0 ? this.state.translated : ""}
+        <div id="translation">
+          <form onSubmit={e => this.translateNote(e)} id="translateform">
+            <Select
+              className="select-translate"
+              value={this.selectedOption}
+              onChange={this.handleChange}
+              options={this.languages}
+              placeholder={"Please select a language"}
+            />
+            <input
+              type="submit"
+              name="Translate"
+              className="submit-translation"
+            />
+          </form>
+          <div className="translated">
+            {this.state.translated.length > 0 ? this.state.translated : ""}
+          </div>
         </div>
       </div>
     );
