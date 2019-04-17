@@ -121,6 +121,52 @@ export const editNoteBook = (notebook, id) => {
   };
 };
 
+export const newNotebook = notebook => {
+  return dispatch => {
+    return fetch(`http://localhost:3002/api/v1/notebooks`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem("jwt")
+      },
+      body: JSON.stringify({
+        notebook: {
+          title: notebook.title
+        }
+      })
+    })
+      .then(res => res.json())
+      .then(note => dispatch({ type: "CREATE_NOTEBOOK", note }))
+      .catch(console.error);
+  };
+};
+
+export const newNote = note => {
+  return dispatch => {
+    return fetch(`http://localhost:3002/api/v1/notes/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem("jwt")
+      },
+      body: JSON.stringify({
+        note: {
+          title: note.title,
+          created: note.created,
+          description: note.description,
+          content: note.content,
+          notebook_id: note.notebookID,
+          user_id: note.userID
+        }
+      })
+    })
+      .then(res => res.json())
+      .then(note => dispatch({ type: "CREATE_NOTE", note }))
+      .catch(console.error);
+  };
+};
 export const login = data => {
   return dispatch => {
     return fetch("http://localhost:3002/api/user_token", {
