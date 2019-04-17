@@ -15,14 +15,14 @@ class LogIn extends Component {
   };
   handleSubmit = (e, obj) => {
     e.preventDefault();
-    this.login(obj);
-    // this.props.history.push(`/${this.state.auth.email}/homepage`);
+    this.props.login(obj);
+    console.log(this.props.currentUser, "730");
+    this.props.history.push(`/${this.state.auth.email}/homepage`);
     // setTimeout(() => window.location.reload(), 10);
   };
 
   login = obj => {
     fetch("http://localhost:3002/api/user_token", {
-      // mode: "no-cors",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,6 +58,7 @@ class LogIn extends Component {
       );
   };
   render() {
+    console.log(this.props.currentUser, "g");
     return (
       <div className="login-parent">
         <div className="login-container" />
@@ -109,6 +110,7 @@ class LogIn extends Component {
 }
 const mapStateToProps = (state, ownProps) => {
   if (state) {
+    console.log(state.currentUser, "state", ownProps);
     return {
       currentUser: state.currentUser
     };

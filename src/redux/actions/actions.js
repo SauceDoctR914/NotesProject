@@ -141,6 +141,7 @@ export const login = data => {
         console.log(user, "LOG IN");
         localStorage.setItem("jwt", user.jwt);
         dispatch(setUser(user));
-      });
+      })
+      .catch(e => console.error(e));
   };
 };

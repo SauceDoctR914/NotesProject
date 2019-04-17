@@ -81,13 +81,15 @@ class UserPage extends Component {
             Log Out{" "}
           </button>
         </div>
-        <h1 className="your-notebooks">Your Notebooks</h1>
-        <div className="notebooks-list">{this.myNoteBooks()}</div>
-        <div className="newNoteBook">
-          <NewNoteBook
-            currentUser={this.props.currentUser}
-            handleNoteBookSubmit={this.handleNoteBookSubmit}
-          />
+        <div id="newNBcontainer">
+          <h1 className="your-notebooks">Your Notebooks</h1>
+          <div className="notebooks-list">{this.myNoteBooks()}</div>
+          <div className="newNoteBook">
+            <NewNoteBook
+              currentUser={this.props.currentUser}
+              handleNoteBookSubmit={this.handleNoteBookSubmit}
+            />
+          </div>
         </div>
       </div>
     );
