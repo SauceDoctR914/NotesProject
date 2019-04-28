@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../redux/actions/actions";
+import "../StyleSheets/Login.css";
 class LogIn extends Component {
   state = {
     errors: false,
