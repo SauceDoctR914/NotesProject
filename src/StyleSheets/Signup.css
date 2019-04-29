@@ -1,13 +1,13 @@
 .signup-button {
   align-items: center;
   border-radius: 3px;
-  width: 7.5em;
+  width: 113px;
   height: 1.8em;
   font-size: 15px;
   font-weight: bold;
-  margin-top: 1em;
-  margin-left: 0.65em;
-  margin-right: 0.5em;
+  margin-top: 15px;
+  margin-left: 8px;
+  margin-right: 7.5px;
   text-align: center;
   background-color: #c5b8d6;
 }
@@ -20,8 +20,8 @@
   text-align: center;
 }
 #sign-in {
-  width: 7.5em;
-  height: 1.8em;
+  width: 113px;
+  height: 27px;
   font-size: 15px;
   font-weight: bold;
   background-color: #75c8b9;
