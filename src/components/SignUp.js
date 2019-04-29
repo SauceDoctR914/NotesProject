@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Redirect } from "react-router-dom";
+import "../StyleSheets/Signup.css";
 class SignUp extends Component {
   state = {
     user: {
