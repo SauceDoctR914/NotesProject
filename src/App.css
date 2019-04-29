@@ -531,58 +531,6 @@ body {
   height: 100%;
 }
 
-.email {
-  text-align: center;
-  border-radius: 5px;
-  width: 13em;
-  font-size: 19px;
-  height: 2.2em;
-}
-.password {
-  text-align: center;
-  border-radius: 5px;
-  width: 13em;
-  font-size: 19px;
-  height: 2.2em;
-}
-.signup-button {
-  align-items: center;
-  border-radius: 3px;
-  width: 7.5em;
-  height: 1.8em;
-  font-size: 15px;
-  font-weight: bold;
-  margin-top: 1em;
-  margin-left: 0.65em;
-  margin-right: 0.5em;
-  text-align: center;
-  background-color: #c5b8d6;
-}
-.signup-button:hover {
-  background-color: #d7c4ef;
-  box-shadow: 0 0 1px 1px white;
-}
-
-.signup-password {
-  text-align: center;
-}
-#sign-in {
-  width: 7.5em;
-  height: 1.8em;
-  font-size: 15px;
-  font-weight: bold;
-  background-color: #75c8b9;
-  border: none;
-}
-#sign-in:hover {
-  background: #7cddcb;
-  box-shadow: 0 0 1px 1px white;
-}
-.signup-form {
-  text-align: center;
-  border-radius: 5px;
-}
-
 /* translateText */
 #translateform {
 }
