@@ -5,7 +5,8 @@ class SignUp extends Component {
   state = {
     user: {
       email: "",
-      password: ""
+      password: "",
+      passwordMatch: ""
     }
   };
 
@@ -21,11 +22,19 @@ class SignUp extends Component {
 
   handleSubmit = (e, obj) => {
     e.preventDefault();
-    this.signup(this.state.user.email, this.state.user.password);
+    if (
+      this.state.user.email &&
+      this.state.user.password &&
+      this.state.user.password === this.state.user.passwordMatch
+    ) {
+      this.signup(this.state.user.email, this.state.user.password);
+    } else {
+      window.alert("Something went wrong! Please try again.");
+    }
   };
   componentDidMount() {}
 
-  signup = (email, password, tester) => {
+  signup = (email, password) => {
     const URL = "http://localhost:3002/api/v1/users";
     if (password) {
       fetch(URL, {
@@ -76,7 +85,6 @@ class SignUp extends Component {
             />
             <br />
             <br />
-            <br />
             <input
               placeholder="Password"
               onChange={this.handleChange}
@@ -86,6 +94,19 @@ class SignUp extends Component {
               value={this.state.user.password}
             />
             <br />
+            <br />
+            <input
+              placeholder="Re-enter Password"
+              onChange={this.handleChange}
+              name="passwordMatch"
+              className="password"
+              type="password"
+              value={this.state.user.passwordMatch}
+            />
+            <br />
+            <button onClick={this.accountReady} className="sign-in">
+              Have Account?
+            </button>
             <input
               type="submit"
               name="Submit"
@@ -93,9 +114,7 @@ class SignUp extends Component {
               className="signup-button"
             />
           </form>
-          <span onClick={this.accountReady} id="sign-in">
-            Have an Account?
-          </span>
+
           <br />
         </div>
       </div>

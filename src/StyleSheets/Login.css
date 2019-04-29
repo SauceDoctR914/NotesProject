@@ -65,13 +65,14 @@
 .loginformtitle {
   display: inline-block;
   margin-left: 50%;
+  margin-bottom: 50%;
+  transform: translate(-50%, 50%);
 }
 .login-form {
   justify-content: center;
   text-align: center;
   border-radius: 5px;
   width: 300px;
-  transform: translateX(-50%);
 }
 .signup-button {
   align-items: center;

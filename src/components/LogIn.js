@@ -81,7 +81,6 @@ class LogIn extends Component {
                 value={this.state.auth.email}
               />
               <br />
-              <br />
               <label htmlFor="password" />
               <br />
               <input

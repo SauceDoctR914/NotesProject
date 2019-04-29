@@ -20,7 +20,7 @@
   text-align: center;
 }
 
-#sign-in {
+.sign-in {
   width: 113px;
   height: 27px;
   font-size: 15px;
@@ -31,7 +31,7 @@
   border-radius: 3px;
   margin-left: 8px;
 }
-#sign-in:hover {
+.sign-in:hover {
   background: #7cddcb;
   box-shadow: 0 0 1px 1px white;
 }
