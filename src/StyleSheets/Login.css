@@ -54,10 +54,9 @@
   height: 100%;
   padding: 0;
   min-width: 100%;
-  background-color: #f7f7f7;
+  background: linear-gradient(to bottom, #00ffff 0%, #6600ff 100%);
   margin-right: 0;
   border: 1px solid black;
-  background: #2575fc;
 }
 .login-title {
   text-align: center;

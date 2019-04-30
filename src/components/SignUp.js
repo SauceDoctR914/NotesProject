@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter, Redirect, Link } from "react-router-dom";
 import "../StyleSheets/Signup.css";
 class SignUp extends Component {
   state = {
@@ -29,7 +29,8 @@ class SignUp extends Component {
     ) {
       this.signup(this.state.user.email, this.state.user.password);
     } else {
-      window.alert("Something went wrong! Please try again.");
+      alert("Something went wrong! Please try again.");
+      window.location.reload();
     }
   };
   componentDidMount() {}
@@ -67,7 +68,6 @@ class SignUp extends Component {
     return (
       <div className="login-parent">
         <div className="login-container" />
-        <div className="background-login" />
         <div className="login-div">
           <h1 className="login-title">Sign Up</h1>
           <form
@@ -104,17 +104,20 @@ class SignUp extends Component {
               value={this.state.user.passwordMatch}
             />
             <br />
-            <button onClick={this.accountReady} className="sign-in">
-              Have Account?
-            </button>
             <input
               type="submit"
               name="Submit"
               value="Register"
               className="signup-button"
             />
+            <Link
+              to={{
+                pathname: `/`
+              }}
+            >
+              <button className="sign-in">Login Page</button>
+            </Link>
           </form>
-
           <br />
         </div>
       </div>
