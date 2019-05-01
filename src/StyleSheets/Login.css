@@ -54,14 +54,19 @@
   height: 100%;
   padding: 0;
   min-width: 100%;
-  background: linear-gradient(to bottom, #00ffff 0%, #6600ff 100%);
+  background: linear-gradient(
+      to right bottom,
+      rgba(0, 255, 255, 0.78),
+      rgba(102, 0, 255, 0.78)
+    ),
+    url("https://images.unsplash.com/photo-1533103601126-a65ecc2cfc39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80");
   margin-right: 0;
   border: 1px solid black;
 }
 .login-title {
   text-align: center;
 }
-.loginformtitle {
+.login-form-title {
   display: inline-block;
   margin-left: 50%;
   margin-bottom: 50%;

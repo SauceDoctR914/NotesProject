@@ -64,7 +64,7 @@ class LogIn extends Component {
       <div className="login-parent">
         <div className="login-container" />
         <div className="login-div">
-          <div className="loginformtitle">
+          <div className="login-form-title">
             <h1 className="login-title">Login</h1>
             <form
               onSubmit={e => this.handleSubmit(e, this.state)}

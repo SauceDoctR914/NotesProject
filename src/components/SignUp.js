@@ -67,7 +67,7 @@ class SignUp extends Component {
   render() {
     return (
       <div className="login-parent">
-        <div className="loginformtitle" />
+        <div className="login-form-title" />
         <div className="login-div">
           <h1 className="login-title">Sign Up</h1>
           <form
