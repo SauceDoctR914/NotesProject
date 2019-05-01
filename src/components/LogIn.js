@@ -92,7 +92,12 @@ class LogIn extends Component {
                 value={this.state.auth.password}
               />
               <br />
-              <input type="submit" name="Submit" value="Sign In" id="sign-in" />
+              <input
+                type="submit"
+                name="Submit"
+                value="Sign In"
+                className="sign-in"
+              />
               <Link
                 to={{
                   pathname: `/signup`

@@ -9,6 +9,7 @@
   margin-left: 8px;
   margin-right: 7.5px;
   text-align: center;
+  border: none;
   background-color: #c5b8d6;
 }
 .signup-button:hover {
@@ -20,17 +21,6 @@
   text-align: center;
 }
 
-.sign-in {
-  width: 113px;
-  height: 27px;
-  font-size: 14px;
-  font-weight: bold;
-  background-color: #75c8b9;
-  border: none;
-  text-align: center;
-  border-radius: 3px;
-  margin-left: 8px;
-}
 .sign-in:hover {
   background: #7cddcb;
   box-shadow: 0 0 1px 1px white;
