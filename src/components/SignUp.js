@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Redirect, Link } from "react-router-dom";
-import "../StyleSheets/Signup.css";
+import "../StyleSheets/Login.css";
 class SignUp extends Component {
   state = {
     user: {
@@ -67,8 +67,7 @@ class SignUp extends Component {
   render() {
     return (
       <div className="login-parent">
-        <div className="login-form-title" />
-        <div className="login-div">
+        <div className="login-form-title">
           <h1 className="login-title">Sign Up</h1>
           <form
             onSubmit={e => this.handleSubmit(e, this.state)}

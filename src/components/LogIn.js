@@ -62,52 +62,49 @@ class LogIn extends Component {
     console.log(this.props.currentUser, "g");
     return (
       <div className="login-parent">
-        <div className="login-container" />
-        <div className="login-div">
-          <div className="login-form-title">
-            <h1 className="login-title">Login</h1>
-            <form
-              onSubmit={e => this.handleSubmit(e, this.state)}
-              className="login-form"
-            >
-              <label htmlFor="email" />
-              <br />
-              <input
-                placeholder="E-mail"
-                onChange={this.handleChange}
-                name="email"
-                className="email"
-                type="email"
-                value={this.state.auth.email}
-              />
-              <br />
-              <label htmlFor="password" />
-              <br />
-              <input
-                placeholder="Password"
-                onChange={this.handleChange}
-                name="password"
-                className="password"
-                type="password"
-                value={this.state.auth.password}
-              />
-              <br />
-              <input
-                type="submit"
-                name="Submit"
-                value="Sign In"
-                className="sign-in"
-              />
-              <Link
-                to={{
-                  pathname: `/signup`
-                }}
-              >
-                <button className="signup-button">Sign Up</button>
-              </Link>
-            </form>
+        <div className="login-form-title">
+          <h1 className="login-title">Login</h1>
+          <form
+            onSubmit={e => this.handleSubmit(e, this.state)}
+            className="login-form"
+          >
+            <label htmlFor="email" />
             <br />
-          </div>
+            <input
+              placeholder="E-mail"
+              onChange={this.handleChange}
+              name="email"
+              className="email"
+              type="email"
+              value={this.state.auth.email}
+            />
+            <br />
+            <label htmlFor="password" />
+            <br />
+            <input
+              placeholder="Password"
+              onChange={this.handleChange}
+              name="password"
+              className="password"
+              type="password"
+              value={this.state.auth.password}
+            />
+            <br />
+            <input
+              type="submit"
+              name="Submit"
+              value="Sign In"
+              className="sign-in"
+            />
+            <Link
+              to={{
+                pathname: `/signup`
+              }}
+            >
+              <button className="signup-button">Sign Up</button>
+            </Link>
+          </form>
+          <br />
         </div>
       </div>
     );
