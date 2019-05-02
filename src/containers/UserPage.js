@@ -3,6 +3,7 @@ import NoteBook from "../components/NoteBook";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchNoteBooks, getUsers } from "../redux/actions/actions";
+import "../StyleSheets/Login.css";
 import NewNoteBook from "../components/NewNoteBook";
 class UserPage extends Component {
   componentDidMount() {
@@ -10,11 +11,6 @@ class UserPage extends Component {
     this.props.getUsers();
     this.props.fetchNoteBooks();
   }
-  // state ={
-  //   userNoteBooks: []
-  // }
-  //   if (this.props.currentUser.length > 0){
-  //  this.setState({userNotebooks:  });
   state = {
     notebook: {
       title: ""
@@ -47,7 +43,7 @@ class UserPage extends Component {
   };
 
   myNoteBooks = () => {
-    if (this.props.notebooks.length > 0 && this.props.currentUser.length > 0) {
+    if (this.props.notebooks && this.props.currentUser.length > 0) {
       return this.props.notebooks
         .filter(notebook => {
           return (
@@ -69,11 +65,8 @@ class UserPage extends Component {
     }
   };
 
-  //Need to figure out how to display the titles of the notebooks, then when you click one notebook, it brings you to that notebook page with all of the notes.
-  // also, make it so that the edit note looks very similar to the note itself
-  // you click to edit a note, then click to post a note.
-
   render() {
+    console.log(this.props.notebooks, "user", this.props);
     return (
       <div className="userPage-div">
         <div className="logout-div">
@@ -96,11 +89,10 @@ class UserPage extends Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
+  console.log(state.currentUser, "state", ownProps);
   if (state) {
     return {
-      currentUser: state.users.filter(
-        user => user.attributes.email === ownProps.match.params.email
-      ),
+      currentUser: state.currentUser,
       notebooks: state.notebooks
     };
   }

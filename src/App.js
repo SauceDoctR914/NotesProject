@@ -129,9 +129,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
       users: state.users,
       notes: state.notes,
-      currentUser: state.users.filter(
-        user => user.attributes.email === ownProps.match.params.email
-      ),
+      currentUser: state.currentUser,
       notebooks: state.notebooks
     };
   }

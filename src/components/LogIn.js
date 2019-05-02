@@ -22,42 +22,42 @@ class LogIn extends Component {
     // setTimeout(() => window.location.reload(), 10);
   };
 
-  login = obj => {
-    fetch("http://localhost:3002/api/user_token", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        auth: {
-          email: obj.auth.email,
-          password: obj.auth.password
-        }
-      })
-    })
-      .then(res => res.json())
-      .then(user => {
-        console.log("USER", user);
-        if (user.error) {
-          console.log("USER", user);
-          this.setState({ errors: true });
-        } else {
-          console.log("USER", user);
-          localStorage.setItem("jwt", user.jwt);
-          if (user.jwt) {
-            console.log("USER", user);
-            this.props.history.push(`/${this.state.auth.email}/homepage`);
-          }
-        }
-      })
-      .catch(
-        e =>
-          window.alert(
-            "Sorry, something went wrong. Please try logging in again."
-          ) && console.error
-      );
-  };
+  // login = obj => {
+  //   fetch("http://localhost:3002/api/user_token", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json"
+  //     },
+  //     body: JSON.stringify({
+  //       auth: {
+  //         email: obj.auth.email,
+  //         password: obj.auth.password
+  //       }
+  //     })
+  //   })
+  //     .then(res => res.json())
+  //     .then(user => {
+  //       console.log("USER", user);
+  //       if (user.error) {
+  //         console.log("USER", user);
+  //         this.setState({ errors: true });
+  //       } else {
+  //         console.log("USER", user);
+  //         localStorage.setItem("jwt", user.jwt);
+  //         if (user.jwt) {
+  //           console.log("USER", user);
+  //           this.props.history.push(`/${this.state.auth.email}/homepage`);
+  //         }
+  //       }
+  //     })
+  //     .catch(
+  //       e =>
+  //         window.alert(
+  //           "Sorry, something went wrong. Please try logging in again."
+  //         ) && console.error
+  //     );
+  // };
   render() {
     console.log(this.props.currentUser, "g");
     return (
