@@ -19,7 +19,7 @@ class LogIn extends Component {
     this.props.login(obj);
     console.log(this.props.currentUser, "730");
     this.props.history.push(`/${this.state.auth.email}/homepage`);
-    setTimeout(() => window.location.reload(), 10);
+    setTimeout(() => window.location.reload(), 1000);
   };
 
   // login = obj => {

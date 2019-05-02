@@ -42,11 +42,11 @@ class UserPage extends Component {
   };
 
   myNoteBooks = () => {
-    if (this.props.notebooks.length > 0 && this.props.currentUser.length > 0) {
+    if (this.props.notebooks.length > 0) {
       return this.props.notebooks
         .filter(notebook => {
           return (
-            notebook.relationships.user.data.id === this.props.currentUser[0].id
+            notebook.relationships.user.data.id === this.props.currentUser.id
           );
         })
         .map(notebook => {
@@ -60,7 +60,7 @@ class UserPage extends Component {
           );
         });
     } else {
-      console.log(this.props.notebooks, "else");
+      console.log(this.props.notebooks, "else", this.props.currentUser);
       return <div>No Notebooks</div>;
     }
   };
@@ -90,7 +90,7 @@ class UserPage extends Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
-  console.log(state.currentUser, "state", ownProps);
+  console.log(state, "state", ownProps);
   if (state) {
     return {
       currentUser: state.currentUser,

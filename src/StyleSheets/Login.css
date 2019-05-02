@@ -1,5 +1,6 @@
 .login-parent {
   height: 95vh;
+  width: 100vw;
   padding: 30px;
   overflow-y: hidden;
   overflow-x: hidden;
