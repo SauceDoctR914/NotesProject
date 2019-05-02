@@ -76,17 +76,7 @@ class App extends Component {
               <UserPage {...routerProps} logOut={this.logOut} />
             )}
           />
-          <Route
-            exact
-            path="/homepage/notebook/:id"
-            render={routerProps => (
-              <NotesContainer
-                {...routerProps}
-                logOut={this.logOut}
-                location={window.location}
-              />
-            )}
-          />
+
           <Route
             exact
             path="/homepage/notebook/:id/editnotebook"

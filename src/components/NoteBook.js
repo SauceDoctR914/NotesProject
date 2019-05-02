@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import Note from "../components/Note";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -12,22 +12,6 @@ class NoteBook extends Component {
     this.props.fetchNotes();
   }
 
-  mapNotes = () => {
-    if (this.props.notes.length > 0) {
-      return this.props.notes.map(note => {
-        return (
-          <Note
-            key={note.id}
-            note={note}
-            notebookID={this.props.notebook.id}
-            currentUser={this.props.user}
-          />
-        );
-      });
-    } else {
-      return <div>No Notes</div>;
-    }
-  };
   render() {
     return (
       <React.Fragment>
@@ -52,6 +36,13 @@ class NoteBook extends Component {
             <button> Edit Notebook</button>
           </Link>
         </div>
+        <Route
+          exact
+          path="/homepage/notebook/:id"
+          render={routerProps => (
+            <NotesContainer {...routerProps} location={window.location} />
+          )}
+        />
       </React.Fragment>
     );
   }
