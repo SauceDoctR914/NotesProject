@@ -19,7 +19,7 @@ class LogIn extends Component {
     this.props.login(obj);
     console.log(this.props.currentUser, "730");
     this.props.history.push(`/${this.state.auth.email}/homepage`);
-    // setTimeout(() => window.location.reload(), 10);
+    setTimeout(() => window.location.reload(), 10);
   };
 
   // login = obj => {
@@ -59,7 +59,6 @@ class LogIn extends Component {
   //     );
   // };
   render() {
-    console.log(this.props.currentUser, "g");
     return (
       <div className="login-parent">
         <div className="login-form-title">
@@ -112,7 +111,6 @@ class LogIn extends Component {
 }
 const mapStateToProps = (state, ownProps) => {
   if (state) {
-    console.log(state.currentUser, "state", ownProps);
     return {
       currentUser: state.currentUser
     };

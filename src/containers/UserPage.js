@@ -3,13 +3,12 @@ import NoteBook from "../components/NoteBook";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchNoteBooks, getUsers } from "../redux/actions/actions";
-import "../StyleSheets/Login.css";
+import "../StyleSheets/UserPage.css";
 import NewNoteBook from "../components/NewNoteBook";
 class UserPage extends Component {
   componentDidMount() {
-    console.log("didmount");
-    this.props.getUsers();
     this.props.fetchNoteBooks();
+    this.props.getUsers();
   }
   state = {
     notebook: {
@@ -43,7 +42,7 @@ class UserPage extends Component {
   };
 
   myNoteBooks = () => {
-    if (this.props.notebooks && this.props.currentUser.length > 0) {
+    if (this.props.notebooks.length > 0 && this.props.currentUser.length > 0) {
       return this.props.notebooks
         .filter(notebook => {
           return (
@@ -61,9 +60,11 @@ class UserPage extends Component {
           );
         });
     } else {
+      console.log(this.props.notebooks, "else");
       return <div>No Notebooks</div>;
     }
   };
+  // notebooks are populating on 3rd render but by that time
 
   render() {
     console.log(this.props.notebooks, "user", this.props);
@@ -74,15 +75,15 @@ class UserPage extends Component {
             Log Out{" "}
           </button>
         </div>
-        <div id="newNBcontainer">
+        <div className="new-NB-container">
           <h1 className="your-notebooks">Your Notebooks</h1>
           <div className="notebooks-list">{this.myNoteBooks()}</div>
-          <div className="newNoteBook">
+          <span className="newNoteBook">
             <NewNoteBook
               currentUser={this.props.currentUser}
               handleNoteBookSubmit={this.handleNoteBookSubmit}
             />
-          </div>
+          </span>
         </div>
       </div>
     );
