@@ -24,7 +24,7 @@ class LogIn extends Component {
       );
       window.location.reload();
     } else {
-      this.props.history.push(`/${this.state.auth.email}/homepage`);
+      this.props.history.push(`/homepage`);
     }
   };
 

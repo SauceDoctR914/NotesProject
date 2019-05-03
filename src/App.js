@@ -71,7 +71,8 @@ class App extends Component {
             )}
           />
           <Route
-            path={"/:email/homepage"}
+            exact
+            path={"/homepage"}
             render={routerProps => (
               <UserPage {...routerProps} logOut={this.logOut} />
             )}
