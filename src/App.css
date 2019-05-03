@@ -3,13 +3,6 @@
   padding: 0;
 }
 
-/* parent div is notebook-bar */
-.notebook-bar {
-  /* position: fixed; */
-  margin-bottom: 20%;
-  overflow-y: scroll;
-}
-
 /* notescontainer */
 .note-container {
   min-height: 150vh;
@@ -76,55 +69,6 @@
 
 /* userpage */
 
-.newnb-div {
-  margin-top: 5%;
-  position: absolute;
-  top: 100%;
-}
-#newnb-title {
-  background: #b7d4e0;
-  width: 250px;
-  font-size: 18px;
-  height: 43px;
-  border: none;
-}
-#newnb-title:hover {
-  box-shadow: 0 0 4px 3px #a3c2ce;
-}
-
-.NewNoteBook {
-  /* position: relative; */
-}
-.createNB {
-  width: 600px;
-  margin-left: 0%;
-  font-size: 45px;
-  text-shadow: 0 5px 4px white;
-  font-weight: bold;
-}
-.newnb-div {
-}
-.newNbform {
-  display: inline-block;
-  align-items: center;
-  width: 600px;
-  height: 250px;
-}
-
-.submitNotebook {
-  width: 250px;
-  margin-top: 15px;
-  font-size: 15px;
-  background: black;
-  font-weight: bold;
-  color: white;
-  border-radius: 7px;
-  height: 43px;
-}
-.submitNotebook:hover {
-  box-shadow: 0 0 3px 3px white;
-}
-
 .css-vj8t7z {
   width: 250px !important;
 }
@@ -147,7 +91,7 @@
   color: black !important;
 }
 
-.title-bar {
+/* .title-bar {
   min-width: 20%;
   left: 40%;
   right: 40%;
@@ -156,8 +100,9 @@
   margin-top: 1em;
   top: 20%;
   align-items: center;
-  min-height: 40%; /* position: absolute; */
-}
+  min-height: 40%;
+   position: absolute;
+} */
 a {
   text-decoration: none;
 }

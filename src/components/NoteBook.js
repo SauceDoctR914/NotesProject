@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import { Link, Route } from "react-router-dom";
+import {
+  Link,
+  Route,
+  BrowserRouter as Router,
+  withRouter
+} from "react-router-dom";
 import Note from "../components/Note";
-import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchNotes } from "../redux/actions/actions";
 import NotesContainer from "../containers/NotesContainer";
@@ -14,36 +18,35 @@ class NoteBook extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Router>
         <div className="notebook-bar">
-          <Link
-            to={{
-              pathname: `/homepage/notebook/${this.props.notebook.id}`,
-              state: { currentUser: this.props.currentUser }
-            }}
-          >
-            <div className="title-bar">
+          <div className="title-bar">
+            <Link
+              to={{
+                pathname: `/homepage/notebook/${this.props.notebook.id}`,
+                state: { currentUser: this.props.currentUser }
+              }}
+            >
               {this.props.notebook.attributes.title}
-            </div>
-          </Link>
-          <Link
-            to={{
-              pathname: `/homepage/notebook/${
-                this.props.notebook.id
-              }/editnotebook`
-            }}
-          >
-            <button> Edit Notebook</button>
-          </Link>
+            </Link>
+            <Link
+              to={{
+                pathname: `/homepage/notebook/${
+                  this.props.notebook.id
+                }/editnotebook`
+              }}
+            >
+              <button> Edit Notebook</button>
+            </Link>
+          </div>
+          <Route
+            path="/homepage/notebook/:id"
+            render={routerProps => (
+              <NotesContainer {...routerProps} location={window.location} />
+            )}
+          />
         </div>
-        <Route
-          exact
-          path="/homepage/notebook/:id"
-          render={routerProps => (
-            <NotesContainer {...routerProps} location={window.location} />
-          )}
-        />
-      </React.Fragment>
+      </Router>
     );
   }
 }

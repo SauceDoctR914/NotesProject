@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import NoteBook from "../components/NoteBook";
-import { withRouter } from "react-router-dom";
+import {
+  Link,
+  Route,
+  BrowserRouter as Router,
+  withRouter
+} from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchNoteBooks, getUsers } from "../redux/actions/actions";
 import "../StyleSheets/UserPage.css";
