@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import { fetchNoteBooks, getUsers } from "../redux/actions/actions";
 import "../StyleSheets/UserPage.css";
 import NewNoteBook from "../components/NewNoteBook";
+import NotesContainer from "../containers/NotesContainer";
 class UserPage extends Component {
   componentDidMount() {
     this.props.fetchNoteBooks();
@@ -76,30 +77,62 @@ class UserPage extends Component {
   render() {
     console.log(this.props.notebooks, "user", this.props);
     return (
-      <div className="userPage-div">
-        <div className="logout-div">
-          <button
-            className="logOut"
-            onClick={() => {
-              this.props.logOut();
-              window.location.reload();
-              this.forceUpdate();
-            }}
-          >
-            Log Out{" "}
-          </button>
+      <Router>
+        <div className="userPage-div">
+          <div className="logout-div">
+            <button
+              className="logOut"
+              onClick={() => {
+                this.props.logOut();
+                window.location.reload();
+                this.forceUpdate();
+              }}
+            >
+              Log Out{" "}
+            </button>
+          </div>
+          <div className="new-NB-container">
+            <h1 className="your-notebooks">Your Notebooks</h1>
+            <div className="notebooks-list">
+              {this.props.notebooks.map(notebook => {
+                return (
+                  <React.Fragment>
+                    <Link
+                      to={{
+                        pathname: `/homepage/notebook/${notebook.id}`,
+                        state: { currentUser: this.props.currentUser }
+                      }}
+                    >
+                      {notebook.attributes.title}
+                    </Link>
+                    <Link
+                      to={{
+                        pathname: `/homepage/notebook/${
+                          notebook.id
+                        }/editnotebook`
+                      }}
+                    >
+                      <button> Edit Notebook</button>
+                    </Link>
+                  </React.Fragment>
+                );
+              })}
+            </div>
+            <span className="newNoteBook">
+              <NewNoteBook
+                currentUser={this.props.currentUser}
+                handleNoteBookSubmit={this.handleNoteBookSubmit}
+              />
+            </span>
+          </div>
+          <Route
+            path="/homepage/notebook/:id"
+            render={routerProps => (
+              <NotesContainer {...routerProps} location={window.location} />
+            )}
+          />
         </div>
-        <div className="new-NB-container">
-          <h1 className="your-notebooks">Your Notebooks</h1>
-          <div className="notebooks-list">{this.myNoteBooks()}</div>
-          <span className="newNoteBook">
-            <NewNoteBook
-              currentUser={this.props.currentUser}
-              handleNoteBookSubmit={this.handleNoteBookSubmit}
-            />
-          </span>
-        </div>
-      </div>
+      </Router>
     );
   }
 }
