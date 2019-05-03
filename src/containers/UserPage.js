@@ -15,7 +15,7 @@ class UserPage extends Component {
       title: ""
     }
   };
-
+  //GET USER ACTION, PASS IN ROUTER PROPS FROM APP TO USE IN LINK
   handleNoteBookSubmit = (e, obj) => {
     e.preventDefault();
     e.persist();
@@ -43,22 +43,24 @@ class UserPage extends Component {
 
   myNoteBooks = () => {
     if (this.props.notebooks.length > 0) {
-      return this.props.notebooks
-        .filter(notebook => {
-          return (
-            notebook.relationships.user.data.id === this.props.currentUser.id
-          );
-        })
-        .map(notebook => {
-          return (
-            <NoteBook
-              key={notebook.id}
-              notebook={notebook}
-              currentUser={this.props.currentUser}
-              handleNoteBookSubmit={this.handleNoteBookSubmit}
-            />
-          );
-        });
+      return (
+        this.props.notebooks
+          // .filter(notebook => {
+          //   return (
+          //     notebook.relationships.user.data.id === this.props.currentUser.id
+          //   );
+          // })
+          .map(notebook => {
+            return (
+              <NoteBook
+                key={notebook.id}
+                notebook={notebook}
+                currentUser={this.props.currentUser}
+                handleNoteBookSubmit={this.handleNoteBookSubmit}
+              />
+            );
+          })
+      );
     } else {
       console.log(this.props.notebooks, "else", this.props.currentUser);
       return <div>No Notebooks</div>;
@@ -71,7 +73,14 @@ class UserPage extends Component {
     return (
       <div className="userPage-div">
         <div className="logout-div">
-          <button className="logOut" onClick={() => this.props.logOut()}>
+          <button
+            className="logOut"
+            onClick={() => {
+              this.props.logOut();
+              window.location.reload();
+              this.forceUpdate();
+            }}
+          >
             Log Out{" "}
           </button>
         </div>
