@@ -4,68 +4,6 @@
 }
 
 /* notescontainer */
-.note-container {
-  min-height: 150vh;
-  min-width: 200vh;
-  margin-top: 0;
-  top: 0%;
-  background-size: cover;
-  overflow: auto;
-  background-repeat: no-repeat;
-  box-sizing: border-box;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
-    url("https://images.unsplash.com/photo-1533103601126-a65ecc2cfc39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80");
-  /* background-image: url("https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80"); */
-}
-#notebook-title {
-  font-family: Poppins-Regular, sans-serif;
-  font-size: 80px;
-  font-weight: bold;
-  line-height: 130px;
-  color: #fff;
-  text-transform: uppercase;
-  text-align: center;
-  width: 260px;
-  margin: 25px auto 0;
-  z-index: 19;
-  text-shadow: 0px 0px 0 #6995bc, -1px 1px 0 #638fb5, -2px 2px 0 #5d88ad,
-    -3px 3px 0 #5a84a8, -4px 4px 0 #5982a5, -5px 5px 0 #567ea0,
-    -6px 6px 0 #517696, -7px 7px 0 #4d708e, -8px 8px 0 #486b87,
-    -9px 9px 0 #4e6e89, -10px 10px 0 #45637c, -11px 11px 0 #415e77,
-    -12px 12px 0 #3f5a72, -13px 13px 0 #375066, -14px 14px 0 #2f4559,
-    -15px 15px 0 #273b4c;
-}
-.note-layout {
-  align-items: baseline;
-  margin-left: 2%;
-  min-width: 100vw;
-  display: flex;
-  justify-content: flex-start;
-  overflow-x: hidden;
-  width: 80vw;
-  height: 100vh;
-  position: relative;
-}
-#containerNewNote {
-  width: 450px;
-  margin-left: 3em;
-}
-.notes {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  top: 40%;
-  margin-left: 10%;
-  height: 30em;
-  min-width: 550px;
-  margin-right: 1em;
-}
-.NewNote {
-  min-width: 450px;
-}
-.newNoteForm {
-  min-width: 400px;
-  margin-left: 3em;
-}
 
 /* userpage */
 

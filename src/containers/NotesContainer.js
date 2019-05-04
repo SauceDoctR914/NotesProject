@@ -10,6 +10,7 @@ import {
   deleteNote
 } from "../redux/actions/actions";
 import TranslateText from "../containers/TranslateText";
+import "../StyleSheets/NotesContainer.css";
 import NewNote from "../components/NewNote";
 class NotesContainer extends Component {
   componentDidMount() {
