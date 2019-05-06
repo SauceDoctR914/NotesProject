@@ -101,11 +101,6 @@ class NotesContainer extends Component {
     return (
       <React.Fragment key={this.props.match.params.id}>
         <div className="note-container">
-          <div className="logout-div">
-            <button className="logOut" onClick={() => this.props.logOut()}>
-              Log Out
-            </button>
-          </div>
           {this.props.notebook ? (
             <h2 id="notebook-title">{this.props.notebook.attributes.title}</h2>
           ) : null}

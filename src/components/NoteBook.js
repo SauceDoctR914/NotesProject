@@ -39,6 +39,7 @@ class NoteBook extends Component {
               <button> Edit Notebook</button>
             </Link>
           </div>
+          <br />
           <Route
             path="/homepage/notebook/:id"
             render={routerProps => (

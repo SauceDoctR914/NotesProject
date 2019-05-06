@@ -97,23 +97,28 @@ class UserPage extends Component {
               {this.props.notebooks.map(notebook => {
                 return (
                   <React.Fragment>
-                    <Link
-                      to={{
-                        pathname: `/homepage/notebook/${notebook.id}`,
-                        state: { currentUser: this.props.currentUser }
-                      }}
-                    >
-                      {notebook.attributes.title}
-                    </Link>
-                    <Link
-                      to={{
-                        pathname: `/homepage/notebook/${
-                          notebook.id
-                        }/editnotebook`
-                      }}
-                    >
-                      <button> Edit Notebook</button>
-                    </Link>
+                    <div className="nb-title">
+                      <Link
+                        to={{
+                          pathname: `/homepage/notebook/${notebook.id}`,
+                          state: { currentUser: this.props.currentUser }
+                        }}
+                      >
+                        {notebook.attributes.title}
+                      </Link>
+                      <span className="edit-nb-span">
+                        <Link
+                          to={{
+                            pathname: `/homepage/notebook/${
+                              notebook.id
+                            }/editnotebook`
+                          }}
+                        >
+                          <button> Edit Notebook</button>
+                        </Link>
+                      </span>
+                    </div>
+                    <br />
                   </React.Fragment>
                 );
               })}

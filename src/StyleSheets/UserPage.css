@@ -1,8 +1,10 @@
 .notebooks-list {
+  margin-top: 37px;
   height: 100%;
-  width: 160px;
+  width: 200px;
   position: fixed;
-  z-index: 1;
+  font-size: 14px;
+  z-index: -1;
   top: 0;
   left: 0;
   background-color: red;
@@ -16,6 +18,9 @@
   /* position: fixed; */
   /* margin-bottom: 20%;
   overflow-y: scroll; */
+}
+.edit-nb-span {
+  margin-left: 10px;
 }
 .your-notebooks {
   width: 600px;

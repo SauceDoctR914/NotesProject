@@ -52,7 +52,7 @@ a {
 .logout-div {
   width: 100vw;
   border-bottom-style: solid;
-  height: 2.3em;
+  height: 37px;
   background-color: #5f89b0;
 }
 .logOut {
@@ -255,7 +255,7 @@ h3 {
   overflow: auto;
   background-repeat: no-repeat;
   box-sizing: border-box;
-  background-image: url("https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80");
+  /* background-image: url("https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80"); */
 }
 .editNoteTitle {
   font-family: Poppins-Regular, sans-serif;
@@ -384,7 +384,7 @@ body {
   overflow: auto;
   background-repeat: no-repeat;
   box-sizing: border-box;
-  background-image: url("https://images.unsplash.com/photo-1530379768560-fac46435511d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
+  /* background-image: url("https://images.unsplash.com/photo-1530379768560-fac46435511d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"); */
 }
 .translated {
   /* margin-left: 80vh; */
