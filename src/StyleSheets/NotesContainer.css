@@ -1,9 +1,9 @@
 .note-container {
-  min-height: 150vh;
-  min-width: 200vh;
+  /* min-height: 150vh; */
+  /* min-width: 200vh; */
   margin-top: 0;
   top: 0%;
-  background-size: cover;
+  /* background-size: cover; */
   overflow: auto;
   background-repeat: no-repeat;
   box-sizing: border-box;
