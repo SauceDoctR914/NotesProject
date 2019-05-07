@@ -2,7 +2,7 @@
   min-width: 100vw;
   flex: 1;
   top: 0%;
-  overflow: auto;
+  overflow-x: hidden;
   background-repeat: no-repeat;
   box-sizing: border-box;
   background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
@@ -46,7 +46,7 @@
   top: 40%;
   margin-left: 10%;
   height: 30em;
-  min-width: 550px;
+  /* min-width: 550px; */
   margin-right: 1em;
   display: inline-grid;
   grid-template-columns: auto auto auto;

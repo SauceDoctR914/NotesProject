@@ -78,7 +78,7 @@ class UserPage extends Component {
     console.log(this.props.notebooks, "user", this.props);
     return (
       <Router>
-        <div className="userPage-div">
+        <React.Fragment>
           <div className="logout-div">
             <button
               className="logOut"
@@ -91,36 +91,44 @@ class UserPage extends Component {
               Log Out{" "}
             </button>
           </div>
-          <div className="notebooks-list">
-            <h1 className="your-notebooks">Your Notebooks</h1>
-            {this.props.notebooks.map(notebook => {
-              return (
-                <React.Fragment>
-                  <div className="nb-title">
-                    <Link
-                      to={{
-                        pathname: `/homepage/notebook/${notebook.id}`,
-                        state: { currentUser: this.props.currentUser }
-                      }}
-                    >
-                      {notebook.attributes.title}
-                    </Link>
-                    <span className="edit-nb-span">
+          <div className="userPage-div">
+            <div className="notebooks-list">
+              <h1 className="your-notebooks">Your Notebooks</h1>
+              {this.props.notebooks.map(notebook => {
+                return (
+                  <React.Fragment>
+                    <div className="nb-title">
                       <Link
                         to={{
-                          pathname: `/homepage/notebook/${
-                            notebook.id
-                          }/editnotebook`
+                          pathname: `/homepage/notebook/${notebook.id}`,
+                          state: { currentUser: this.props.currentUser }
                         }}
                       >
-                        <button className="edit-nb-btn"> Edit</button>
+                        {notebook.attributes.title}
                       </Link>
-                    </span>
-                  </div>
-                  <br />
-                </React.Fragment>
-              );
-            })}
+                      <span className="edit-nb-span">
+                        <Link
+                          to={{
+                            pathname: `/homepage/notebook/${
+                              notebook.id
+                            }/editnotebook`
+                          }}
+                        >
+                          <button className="edit-nb-btn"> Edit</button>
+                        </Link>
+                      </span>
+                    </div>
+                    <br />
+                  </React.Fragment>
+                );
+              })}
+            </div>
+            <Route
+              path="/homepage/notebook/:id"
+              render={routerProps => (
+                <NotesContainer {...routerProps} location={window.location} />
+              )}
+            />
           </div>
           <div className="new-NB-container">
             <span className="newNoteBook">
@@ -130,13 +138,7 @@ class UserPage extends Component {
               />
             </span>
           </div>
-          <Route
-            path="/homepage/notebook/:id"
-            render={routerProps => (
-              <NotesContainer {...routerProps} location={window.location} />
-            )}
-          />
-        </div>
+        </React.Fragment>
       </Router>
     );
   }
