@@ -31,6 +31,7 @@ class NewNote extends Component {
             name="title"
             className="title"
             type="text"
+            maxlength="20"
             value={this.state.title}
           />
           <br />
@@ -40,6 +41,7 @@ class NewNote extends Component {
             value={this.state.created}
             onChange={this.handleNoteChange}
             className="created"
+            required
           >
             <option value={this.state.created}>Select Date</option>
             <option value={this.state.created}>
@@ -55,6 +57,7 @@ class NewNote extends Component {
             name="description"
             className="description"
             type="text"
+            maxlength="40"
             value={this.state.note.description}
           />
           <br />
@@ -66,6 +69,7 @@ class NewNote extends Component {
             name="content"
             className="content"
             type="text"
+            maxlength="400"
             value={this.state.note.content}
           />
           <br />

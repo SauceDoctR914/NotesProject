@@ -39,11 +39,13 @@ class EditNoteBook extends Component {
           <br />
           <input
             className="title-nb-edit"
+            maxlength="20"
             onChange={this.handleNoteBookChange}
             name="title"
             id="title"
             type="text"
             value={this.state.notebook.title}
+            required
           />
           <br />
           <input type="submit" name="Submit" />

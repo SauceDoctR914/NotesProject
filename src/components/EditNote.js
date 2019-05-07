@@ -62,6 +62,7 @@ class EditNote extends React.Component {
             name="description"
             className="edit-description"
             type="text"
+            maxlength="40"
             value={this.state.note.description || ""}
           />
           <br />
@@ -72,6 +73,7 @@ class EditNote extends React.Component {
             name="content"
             className="edit-content"
             type="text"
+            maxlength="400"
             value={this.state.note.content || ""}
           />
           <br />

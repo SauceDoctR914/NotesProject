@@ -91,38 +91,38 @@ class UserPage extends Component {
               Log Out{" "}
             </button>
           </div>
-          <div className="new-NB-container">
-            <h1 className="your-notebooks">Your Notebooks</h1>
-            <div className="notebooks-list">
-              {this.props.notebooks.map(notebook => {
-                return (
-                  <React.Fragment>
-                    <div className="nb-title">
+          <div className="notebooks-list">
+            {this.props.notebooks.map(notebook => {
+              return (
+                <React.Fragment>
+                  <div className="nb-title">
+                    <Link
+                      to={{
+                        pathname: `/homepage/notebook/${notebook.id}`,
+                        state: { currentUser: this.props.currentUser }
+                      }}
+                    >
+                      {notebook.attributes.title}
+                    </Link>
+                    <span className="edit-nb-span">
                       <Link
                         to={{
-                          pathname: `/homepage/notebook/${notebook.id}`,
-                          state: { currentUser: this.props.currentUser }
+                          pathname: `/homepage/notebook/${
+                            notebook.id
+                          }/editnotebook`
                         }}
                       >
-                        {notebook.attributes.title}
+                        <button> Edit Notebook</button>
                       </Link>
-                      <span className="edit-nb-span">
-                        <Link
-                          to={{
-                            pathname: `/homepage/notebook/${
-                              notebook.id
-                            }/editnotebook`
-                          }}
-                        >
-                          <button> Edit Notebook</button>
-                        </Link>
-                      </span>
-                    </div>
-                    <br />
-                  </React.Fragment>
-                );
-              })}
-            </div>
+                    </span>
+                  </div>
+                  <br />
+                </React.Fragment>
+              );
+            })}
+          </div>
+          <div className="new-NB-container">
+            <h1 className="your-notebooks">Your Notebooks</h1>
             <span className="newNoteBook">
               <NewNoteBook
                 currentUser={this.props.currentUser}

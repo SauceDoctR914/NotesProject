@@ -26,11 +26,13 @@ class NewNoteBook extends Component {
           <h3 className="createNB">Create A Notebook</h3>
           <br />
           <input
+            required
             placeholder="NoteBook Title"
             onChange={this.handleNoteBookChange}
             name="title"
             id="newnb-title"
             type="text"
+            maxlength="20"
             value={this.state.title}
           />
           <br />
