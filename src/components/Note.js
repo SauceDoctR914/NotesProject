@@ -29,7 +29,7 @@ class Note extends Component {
                 pathname: `/homepage/notes/${this.props.note.id}/editnote`
               }}
             >
-              <button className="edit-button"> Make Changes</button>
+              <button className="edit-button">Change</button>
             </Link>
             <button
               className="delete-note"
@@ -38,14 +38,14 @@ class Note extends Component {
                 this.props.deleteNote(e, this.props.note, this.props.note.id)
               }
             >
-              Delete Note
+              Delete
             </button>
             <Link
               to={{
                 pathname: `/homepage/notes/${this.props.note.id}/translate`
               }}
             >
-              <button className="translate-button"> Translate Content</button>
+              <button className="translate-button">Translate</button>
             </Link>
           </div>
         </div>

@@ -112,9 +112,20 @@
 .edit-nb-btn {
   position: absolute;
   right: 0;
+  height: 20px;
+  line-height: 10px;
   padding: 0 10px;
   margin-right: 5px;
 }
+.edit-nb-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.edit-nb-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
 .createNB {
   width: 600px;
   margin-left: 0%;
