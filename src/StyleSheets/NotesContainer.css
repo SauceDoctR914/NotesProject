@@ -2,6 +2,7 @@
   min-width: 100vw;
   flex: 1;
   top: 0%;
+  left: 182px;
   overflow-x: hidden;
   background-repeat: no-repeat;
   box-sizing: border-box;
@@ -21,7 +22,7 @@
   left: 50%;
   top: 0;
   transform: translateX(-50%);
-  /* margin: 25px auto 0; */
+  margin-bottom: 400px;
   z-index: 19;
   text-shadow: 0px 0px 0 #6995bc, -1px 1px 0 #638fb5, -2px 2px 0 #5d88ad,
     -2px 2px 0 #5a84a8, -3px 3px 0 #5982a5, -4px 4px 0 #567ea0,
@@ -32,7 +33,7 @@
 }
 .note-layout {
   align-items: baseline;
-  margin-left: 2%;
+  /* margin-left: 182px; */
   min-width: 100vw;
   display: flex;
   justify-content: flex-start;
@@ -50,8 +51,8 @@
   overflow-x: hidden;
   top: 30px;
   position: absolute;
-  left: 170px;
-  height: 30em;
+  left: 0;
+  height: 100%;
   /* min-width: 550px; */
   margin-right: 1em;
   display: inline-grid;
