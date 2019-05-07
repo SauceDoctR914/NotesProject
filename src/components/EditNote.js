@@ -49,6 +49,7 @@ class EditNote extends React.Component {
             name="title"
             className="edit-title"
             type="text"
+            maxlength="40"
             value={this.state.note.title || ""}
           />
           <br />

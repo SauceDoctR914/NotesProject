@@ -48,6 +48,8 @@
   height: 30em;
   min-width: 550px;
   margin-right: 1em;
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
 }
 .NewNote {
   min-width: 450px;

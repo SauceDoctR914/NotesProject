@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteNote } from "../redux/actions/actions";
+import "../StyleSheets/Note.css";
 import EditNote from "./EditNote";
 class Note extends Component {
   render() {
