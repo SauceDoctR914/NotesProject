@@ -1,26 +1,21 @@
 .note-container {
-  /* min-height: 150vh; */
   min-width: 100vw;
-  margin-top: 0;
-  margin-left: 240px;
+  flex: 1;
   top: 0%;
-  /* background-size: cover; */
   overflow: auto;
   background-repeat: no-repeat;
   box-sizing: border-box;
   background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
-  /* url("https://images.unsplash.com/photo-1533103601126-a65ecc2cfc39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"); */
-  /* background-image: url("https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80"); */
 }
-#notebook-title {
+.notebook-title {
   font-family: Poppins-Regular, sans-serif;
-  font-size: 80px;
+  font-size: 50px;
   font-weight: bold;
-  line-height: 130px;
+  line-height: 70px;
   color: #fff;
   text-transform: uppercase;
   text-align: center;
-  width: 260px;
+  width: 360px;
   margin: 25px auto 0;
   z-index: 19;
   text-shadow: 0px 0px 0 #6995bc, -1px 1px 0 #638fb5, -2px 2px 0 #5d88ad,

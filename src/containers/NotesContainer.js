@@ -102,7 +102,9 @@ class NotesContainer extends Component {
       <React.Fragment key={this.props.match.params.id}>
         <div className="note-container">
           {this.props.notebook ? (
-            <h2 id="notebook-title">{this.props.notebook.attributes.title}</h2>
+            <h2 className="notebook-title">
+              {this.props.notebook.attributes.title}
+            </h2>
           ) : null}
           <div className="note-layout">
             <div className="notes">{this.mapNotes()}</div>

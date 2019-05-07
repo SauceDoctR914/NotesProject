@@ -1,13 +1,16 @@
 .notebooks-list {
   margin-top: 37px;
   height: 100%;
-  width: 200px;
-  position: fixed;
+  width: 182px;
+  position: absolute;
   font-size: 14px;
-  z-index: -1;
+  /* z-index: -1; */
+  text-align: left;
+  padding-left: 10px;
   top: 0;
   left: 0;
-  background-color: red;
+  background-color: #000;
+  box-sizing: border-box;
   overflow-x: hidden;
   padding-top: 20px;
   color: white;
@@ -47,6 +50,7 @@
 }
 
 .userPage-div {
+  display: flex;
   /* min-height: 150vh;
   width: 100vw;
   margin-top: 0;
