@@ -92,6 +92,7 @@ class UserPage extends Component {
             </button>
           </div>
           <div className="notebooks-list">
+            <h1 className="your-notebooks">Your Notebooks</h1>
             {this.props.notebooks.map(notebook => {
               return (
                 <React.Fragment>
@@ -112,7 +113,7 @@ class UserPage extends Component {
                           }/editnotebook`
                         }}
                       >
-                        <button> Edit Notebook</button>
+                        <button className="edit-nb-btn"> Edit</button>
                       </Link>
                     </span>
                   </div>
@@ -122,7 +123,6 @@ class UserPage extends Component {
             })}
           </div>
           <div className="new-NB-container">
-            <h1 className="your-notebooks">Your Notebooks</h1>
             <span className="newNoteBook">
               <NewNoteBook
                 currentUser={this.props.currentUser}

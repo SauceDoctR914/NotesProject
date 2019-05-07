@@ -69,7 +69,7 @@ class NewNote extends Component {
             name="content"
             className="content"
             type="text"
-            maxlength="400"
+            maxlength="600"
             value={this.state.note.content}
           />
           <br />

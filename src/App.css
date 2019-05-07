@@ -49,30 +49,6 @@ a {
   font-weight: bold;
   font-size: 16px;
 }
-.logout-div {
-  width: 100vw;
-  border-bottom-style: solid;
-  height: 37px;
-  background-color: #5f89b0;
-}
-.logOut {
-  float: left;
-  height: 39px;
-  width: 182px;
-  border-radius: 3px;
-  font-family: Poppins-Regular, sans-serif;
-  font-weight: bold;
-  font-size: 13px;
-  color: #e2e2e2;
-  background: black;
-  align: right;
-  border: none;
-  right: 0;
-}
-.logOut:hover {
-  color: white;
-  background: #141b21;
-}
 
 /* note */
 
@@ -249,19 +225,16 @@ html {
 
 body {
   width: 100%;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   height: 100%;
-  max-height: 850px;
-  max-width: 850px;
-  background-repeat: no-repeat;
   font-family: Poppins-Regular, sans-serif;
-  font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  overflow-x: hidden;
+  /* color: #212529;
 
-  overflow-y: auto;
+  overflow-y: auto; */
 }
 .App {
   width: 100%;

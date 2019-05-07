@@ -22,19 +22,44 @@
   /* margin-bottom: 20%;
   overflow-y: scroll; */
 }
+.logout-div {
+  width: 100%;
+  border-bottom-style: solid;
+  height: 37px;
+  position: relative;
+  background-color: #5f89b0;
+}
+.logOut {
+  position: absolute;
+  height: 39px;
+  width: 182px;
+  border-radius: 3px;
+  font-family: Poppins-Regular, sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+  color: #e2e2e2;
+  background: black;
+  align: right;
+  border: none;
+  right: 0;
+}
+.logOut:hover {
+  color: white;
+  background: #141b21;
+}
 .edit-nb-span {
-  margin-left: 10px;
 }
 .your-notebooks {
-  width: 600px;
+  /* width: 600px;
   font-weight: bold;
-  font-size: 70px;
   color: white;
   text-shadow: 1px 2px 2px white;
 
   margin-left: 48%;
   top: 200px;
-  margin-bottom: 100px;
+  margin-bottom: 100px; */
+  font-size: 18px;
+  padding-bottom: 20px;
 }
 .new-NB-container {
   margin-left: 35%;
@@ -84,10 +109,16 @@
 .NewNoteBook {
   /* position: relative; */
 }
+.edit-nb-btn {
+  position: absolute;
+  right: 0;
+  padding: 0 10px;
+  margin-right: 5px;
+}
 .createNB {
   width: 600px;
   margin-left: 0%;
-  font-size: 45px;
+  font-size: 25px;
   text-shadow: 0 5px 4px white;
   font-weight: bold;
 }
