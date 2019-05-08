@@ -13,9 +13,9 @@ class Note extends Component {
           <div className="notetitle-div">
             {this.props.note.attributes.title}
           </div>
-          <br />
+
           <div className="date-div">{this.props.note.attributes.created}</div>
-          <br />
+
           <div className="desc-div">
             {this.props.note.attributes.description}
           </div>
