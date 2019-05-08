@@ -77,7 +77,6 @@
 .userPage-div {
   display: flex;
   height: 100%;
-  position: relative;
   /* min-height: 150vh;
   width: 100vw;
   margin-top: 0;

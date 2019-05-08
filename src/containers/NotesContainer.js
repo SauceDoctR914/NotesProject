@@ -111,6 +111,16 @@ class NotesContainer extends Component {
               {this.mapNotes()}
             </div>
           </div>
+          <div className="NewNote">
+            <NewNote
+              key={this.props.match.params.id}
+              handleSubmit={this.handleSubmit}
+              title={this.state.note.title}
+              created={this.state.note.created}
+              description={this.state.note.description}
+              content={this.state.note.content}
+            />
+          </div>
         </div>
       </React.Fragment>
     );
@@ -146,14 +156,3 @@ export default withRouter(
     mapDispatchToProps
   )(NotesContainer)
 );
-
-// <div className="NewNote">
-//   <NewNote
-//     key={this.props.match.params.id}
-//     handleSubmit={this.handleSubmit}
-//     title={this.state.note.title}
-//     created={this.state.note.created}
-//     description={this.state.note.description}
-//     content={this.state.note.content}
-//   />
-// </div>

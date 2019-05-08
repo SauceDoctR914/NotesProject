@@ -74,7 +74,7 @@ class EditNote extends React.Component {
             name="content"
             className="edit-content"
             type="text"
-            maxlength="600"
+            maxlength="900"
             value={this.state.note.content || ""}
           />
           <br />
