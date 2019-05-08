@@ -1,14 +1,16 @@
 .individual-note {
   margin-top: 100px;
   width: 350px;
-  min-height: 430px;
+  min-height: 380px;
   margin-bottom: 5%;
   margin-right: 25px;
   border: red;
   background: red;
   border-radius: 9px;
 }
-
+.individual-note:nth-child(n + 5) {
+  margin-top: 10px;
+}
 .notetitle-div {
   /* border-style: solid; */
   text-align: center;

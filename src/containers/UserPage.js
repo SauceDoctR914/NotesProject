@@ -123,20 +123,18 @@ class UserPage extends Component {
                 );
               })}
             </div>
+            <div className="new-NB-container">
+              <NewNoteBook
+                currentUser={this.props.currentUser}
+                handleNoteBookSubmit={this.handleNoteBookSubmit}
+              />
+            </div>
             <Route
               path="/homepage/notebook/:id"
               render={routerProps => (
                 <NotesContainer {...routerProps} location={window.location} />
               )}
             />
-          </div>
-          <div className="new-NB-container">
-            <span className="newNoteBook">
-              <NewNoteBook
-                currentUser={this.props.currentUser}
-                handleNoteBookSubmit={this.handleNoteBookSubmit}
-              />
-            </span>
           </div>
         </React.Fragment>
       </Router>

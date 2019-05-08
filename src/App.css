@@ -232,6 +232,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   overflow-x: hidden;
+  overflow-y: hidden;
   /* color: #212529;
 
   overflow-y: auto; */
