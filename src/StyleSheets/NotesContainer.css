@@ -38,8 +38,8 @@
   float: none;
   margin: 0 auto;
   overflow-x: hidden;
-  max-width: 1125px;
-  transform: translateX(-5%);
+  max-width: 975px;
+  transform: translateX(-8%);
   height: 100vh;
   justify-content: center;
 }
