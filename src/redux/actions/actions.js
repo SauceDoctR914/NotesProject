@@ -188,6 +188,12 @@ export const login = data => {
         localStorage.setItem("jwt", user.jwt);
         dispatch(setUser(user));
       })
-      .catch(e => console.error(e));
+      .catch(e => {
+        console.log(e);
+        window.alert(
+          "Sorry, something went wrong. Refresh page and try logging in again."
+        );
+        return null;
+      });
   };
 };
