@@ -96,7 +96,6 @@ h3 {
   font-size: 15px;
   margin-top: 4%;
   text-align: center;
-
   color: #303235;
   background: #618aae;
   font-weight: bold;
@@ -131,7 +130,6 @@ h3 {
   overflow: auto;
   background-repeat: no-repeat;
   box-sizing: border-box;
-  /* background-image: url("https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80"); */
 }
 .editNoteTitle {
   font-family: Poppins-Regular, sans-serif;
@@ -233,9 +231,6 @@ body {
   line-height: 1.5;
   overflow-x: hidden;
   overflow-y: hidden;
-  /* color: #212529;
-
-  overflow-y: auto; */
 }
 .App {
   width: 100%;
@@ -258,10 +253,8 @@ body {
   overflow: auto;
   background-repeat: no-repeat;
   box-sizing: border-box;
-  /* background-image: url("https://images.unsplash.com/photo-1530379768560-fac46435511d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"); */
 }
 .translated {
-  /* margin-left: 80vh; */
   margin-top: 50px;
   min-height: auto;
   box-shadow: 0 0 3px 3px white;
@@ -271,8 +264,6 @@ body {
   background: #638bac;
 }
 .select-translate {
-  /* margin-left: 80vh; */
-  /* margin-top: 40vh; */
   width: 250px;
   color: black;
   font-weight: bold;
