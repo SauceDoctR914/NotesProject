@@ -95,7 +95,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     editNote: note => dispatch(editNote(note, ownProps.match.params.id))
   };
 };
-// state.notes.filter(note => note.id === id);
 
 export default withRouter(
   connect(

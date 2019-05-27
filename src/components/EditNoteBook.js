@@ -5,9 +5,7 @@ import { editNoteBook } from "../redux/actions/actions";
 import { connect } from "react-redux";
 
 class EditNoteBook extends Component {
-  // componentDidMount() {
-  //   this.props.editNoteBook();
-  // }
+
   state = {
     notebook: {
       id: this.props.notebook.id,
