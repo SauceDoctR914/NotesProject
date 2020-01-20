@@ -21,7 +21,7 @@ class LogIn extends Component {
   };
 
   render() {
-    if (localStorage.length === 1) {
+    if (localStorage.jwt !== undefined) {
       this.props.history.push(`/homepage`);
       return null;
     } else {

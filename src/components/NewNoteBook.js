@@ -13,12 +13,12 @@ class NewNoteBook extends Component {
       ...this.state.notebook,
       [e.target.name]: e.target.value
     };
+    console.log(e.target.value, "value")
     this.setState({ notebook: newNoteBook });
   };
 
   render() {
     return (
-      <div className="newnb-div">
         <form
           className="newNbform"
           onSubmit={e => this.props.handleNoteBookSubmit(e, this.state)}
@@ -44,7 +44,6 @@ class NewNoteBook extends Component {
             className="submitNotebook"
           />
         </form>
-      </div>
     );
   }
 }

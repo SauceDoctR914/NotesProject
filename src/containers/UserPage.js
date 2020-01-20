@@ -13,13 +13,22 @@ import NewNoteBook from "../components/NewNoteBook";
 import NotesContainer from "../containers/NotesContainer";
 class UserPage extends Component {
   componentDidMount() {
-    this.props.fetchNoteBooks();
     this.props.getUsers();
+    this.props.fetchNoteBooks();
+    console.log(this.props.users, "USERS")
+    this.setState({ users: this.props.users });
   }
   state = {
     notebook: {
       title: ""
-    }
+    },
+    users: ""
+  //   this.props.users.map(user => {
+  //     return user.attributes.email
+  //   //   if (localStorage.getItem("email") == user.attributes.email){
+  //   //   return user.id
+  //   // }
+  // })
   };
   //GET USER ACTION, PASS IN ROUTER PROPS FROM APP TO USE IN LINK
   handleNoteBookSubmit = (e, obj) => {
@@ -29,7 +38,6 @@ class UserPage extends Component {
     // window.location.reload();
   };
   postNoteBook = (title, id) => {
-    console.log("THIS");
     const URL = "http://localhost:3002/api/v1/notebooks";
     fetch(URL, {
       method: "POST",
@@ -51,50 +59,11 @@ class UserPage extends Component {
     if (this.props.notebooks.length > 0) {
       return (
         this.props.notebooks
-          // .filter(notebook => {
-          //   return (
-          //     notebook.relationships.user.data.id === this.props.currentUser.id
-          //   );
-          // })
-          .map(notebook => {
+          .filter(notebook => {
             return (
-              <NoteBook
-                key={notebook.id}
-                notebook={notebook}
-                currentUser={this.props.currentUser}
-                handleNoteBookSubmit={this.handleNoteBookSubmit}
-              />
+              notebook.relationships.user.data.id === this.state.id
             );
-          })
-      );
-    } else {
-      console.log(this.props.notebooks, "else", this.props.currentUser);
-      return <div>No Notebooks</div>;
-    }
-  };
-  // notebooks are populating on 3rd render but by that time
-
-  render() {
-    console.log(this.props.notebooks, "user", this.props);
-    return (
-      <Router>
-        <React.Fragment>
-          <div className="logout-div">
-            <button
-              className="logOut"
-              onClick={() => {
-                this.props.logOut();
-                window.location.reload();
-                this.forceUpdate();
-              }}
-            >
-              Log Out{" "}
-            </button>
-          </div>
-          <div className="userPage-div">
-            <div className="notebooks-list">
-              <h1 className="your-notebooks">Your Notebooks</h1>
-              {this.props.notebooks.map(notebook => {
+          }).map(notebook => {
                 return (
                   <React.Fragment>
                     <div className="nb-title">
@@ -121,7 +90,36 @@ class UserPage extends Component {
                     <br />
                   </React.Fragment>
                 );
-              })}
+              })
+      );
+    } else {
+      console.log(this.props.notebooks, "else", this.props.currentUser);
+      return <div>No Notebooks</div>;
+    }
+  };
+  // notebooks are populating on 3rd render but by that time
+
+  render() {
+    console.log(this.state.id, "user", this.props);
+    return (
+      <Router>
+        <React.Fragment>
+          <div className="logout-div">
+            <button
+              className="logOut"
+              onClick={() => {
+                this.props.logOut();
+                window.location.reload();
+                this.forceUpdate();
+              }}
+            >
+              Log Out{" "}
+            </button>
+          </div>
+          <div className="userPage-div">
+            <div className="notebooks-list">
+              <h1 className="your-notebooks">Your Notebooks</h1>
+              {this.myNoteBooks()}
             </div>
             <div className="new-NB-container">
               <NewNoteBook
@@ -142,10 +140,10 @@ class UserPage extends Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
-  console.log(state, "state", ownProps);
+  console.log(state, "state");
   if (state) {
     return {
-      currentUser: state.currentUser,
+      users: state.users,
       notebooks: state.notebooks
     };
   }

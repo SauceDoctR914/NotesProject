@@ -75,7 +75,6 @@ class NotesContainer extends Component {
   // };
 
   postNote = (title, created, description, content) => {
-    console.log("10000000");
     const URL = "http://localhost:3002/api/v1/notes";
     fetch(URL, {
       method: "POST",
@@ -97,7 +96,6 @@ class NotesContainer extends Component {
   };
 
   render() {
-    console.log(this.props, "guyguy");
     return (
       <React.Fragment key={this.props.match.params.id}>
         <div className="note-container">
@@ -118,7 +116,6 @@ class NotesContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state, "state", ownProps);
   if (state.users && state.notes && state.notebooks) {
     return {
       notes: state.notes,

@@ -169,6 +169,7 @@ export const newNote = note => {
 };
 export const login = data => {
   return dispatch => {
+    console.log(data, "DATA")
     return fetch("http://localhost:3002/api/user_token", {
       method: "POST",
       headers: {
@@ -178,7 +179,7 @@ export const login = data => {
       body: JSON.stringify({
         auth: {
           email: data.auth.email,
-          password: data.auth.password
+          password: data.auth.password,
         }
       })
     })
@@ -186,6 +187,7 @@ export const login = data => {
       .then(user => {
         console.log(user, "LOG IN");
         localStorage.setItem("jwt", user.jwt);
+        localStorage.setItem("email", user.email);
         dispatch(setUser(user));
       })
       .catch(e => {
