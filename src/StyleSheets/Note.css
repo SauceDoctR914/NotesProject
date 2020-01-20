@@ -12,10 +12,7 @@
   margin-top: 10px;
 }
 .notetitle-div {
-  /* border-style: solid; */
   text-align: center;
-  /* background: #b6d4e1; */
-  /* box-shadow: 0 0 4px 4px white; */
   width: 300px;
   padding: 0 30px;
   box-sizing: border-box;
@@ -24,7 +21,6 @@
   border-radius: 5px;
 }
 .date-div {
-  /* border-style: solid; */
   border-radius: 5px;
   text-align: center;
   font-size: 13px;

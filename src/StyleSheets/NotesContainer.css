@@ -48,9 +48,6 @@
   margin-left: 3em;
 }
 .notes {
-  /* overflow-y: scroll;
-  overflow-x: hidden; */
-  /* overflow: hidden; */
   position: absolute;
   left: 0;
   height: 100%;
